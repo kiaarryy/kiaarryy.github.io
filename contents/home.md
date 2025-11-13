@@ -1,6 +1,5 @@
 
-
-[![kiaarryy](https://github.com/kiaarryy?tab=stars)]
+[![kiaarryy](https://img.shields.io/badge/kiaarryy-github-blue?logo=github)](https://github.com/kiaarryy?tab=stars)
 
 He is currently a PhD student at the Hong Kong University of Science and Technology (HKUST).
 
