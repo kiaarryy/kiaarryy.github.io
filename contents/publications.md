@@ -1,16 +1,18 @@
 #### Submitted
 
-- <strong>S. Li</strong>*, X. Yang, S. M. Mousavi, A. Cao, K. Fan, Y. Liu, C. Wang, and Q. Niu. Learning Earthquake Wave Arrival Time Picking from Labels with Inaccuracies. <strong>Under Review</strong> [[Code]](https://github.com/senli1073/LaNCor)
+- <strong>Jin, Zhineng</strong>, Hongli Sun*, Junkang Song, Wenke Zhong, Zishuang Xia, Hanjie Zheng, Changqi Wen, Bin Xu and Borong Lin. "Towards Climate-Responsive Atrium Design: A Parametric Multi-Climate Analysis Using Meta-Sample Modeling." <strong>Under Review</strong>
 
 #### Published
+- <strong>Jin, Zhineng</strong>, Hongli Sun*, Junkang Song, Yanhong Zheng, Hanjie Zheng, Menglong Zhang, and Borong Lin. "Novel integrated meta-sampling approach for smart building design: real-time data analytics and energy performance optimization practice." <strong>Energy</strong>(2025): 137501.[[Paper]](https://doi.org/10.1016/j.energy.2025.137501)
 
-- X. Yang, <strong>S. Li</strong>, A. Cao*, C. Wang*, Y. Liu, X. Bai, and Q. Niu (2024). Deep Transfer Learning for P-wave Arrival Identification and Automatic Seismic Source Location in Underground Mines. <strong>International Journal of Rock Mechanics and Mining Sciences</strong>. [[Paper]](https://doi.org/10.1016/j.ijrmms.2024.105888)
+- <strong>Jin, Zhineng</strong>, Hongli Sun*, Meng Han, Yanhong Zheng, Ying Zhao, Wenyang Han, Menglong Zhang, Bin Xu, Zequn Zhang, and Borong Lin. "Indoor-outdoor interactive thermal response in public building: onsite data collection and classification through cluster algorithm." <strong>Energy and Buildings</strong> 328 (2025): 115175. [[Paper]](https://doi.org/10.1016/j.enbuild.2024.115175)
 
-- <strong>S. Li</strong>, X. Yang*, A. Cao*, C. Wang, Y. Liu, Y. Liu, and Q. Niu (2024). SeisT: A Foundational Deep-Learning Model for Earthquake Monitoring Tasks. <strong>IEEE Transactions on Geoscience and Remote Sensing</strong>. [[Paper]](https://doi.org/10.1109/TGRS.2024.3371503) [[Code]](https://github.com/senli1073/SeisT)
+- <strong>Jin, Zhineng</strong>, Yin Zhang*, Hongli Sun*, Meng Han, Yanhong Zheng, Ying Zhao, Wenyang Han, and Menglong Zhang. "Indoor thermal nonuniformity of atrium-centered public building: Monitoring and diagnosis for energy saving." <strong>Case Studies in Thermal Engineering</strong> 54 (2024): 104058.[[Paper]](https://doi.org/10.1016/j.csite.2024.104058)
 
-- A. Cao, X. Yang, C. Wang*, <strong>S. Li</strong>, Y. Liu, L. Dou, and Q. Niu (2023). High-Precision Phase Picking and Automatic Source Locating Method for Seismicity in Mines Based on Deep Transfer Learning. <strong>Journal of China Coal Society</strong>. [[Paper]](https://doi.org/10.13225/j.cnki.jccs.2023.0095)
+- <strong>Jin, Zhineng</strong>, Yanhong Zheng, Dongsheng Huang, Yin Zhang*, Siqiang Lv, and Hongli Sun. "Dehumidification load ratio: influence mechanism on air conditioning and energy saving potential analysis for building cooling." <strong>Sustainable Cities and Society</strong> 99 (2023): 104942.[[Paper]](https://doi.org/10.1016/j.scs.2023.104942)
 
-- A. Cao, Y. Liu, X. Yang*, <strong>S. Li</strong>, C. Wang, X. Bai, and Y. Liu (2022). Physical Index and Data Fusion-Driven Method for Coal Burst Prediction in Time Sequence. <strong>Journal of China Coal Society</strong>. [[Paper]](https://doi.org/10.13225/j.cnki.jccs.2022.0680)
+- <strong>Jin, Zhineng</strong>, Yanhong Zheng, and Yin Zhang*. "A novel method for building air conditioning energy saving potential pre-estimation based on thermodynamic perfection index for space cooling." <strong>Journal of Asian Architecture and Building Engineering</strong> 22, no. 4 (2023): 2348-2364.[[Paper]](https://doi.org/10.1080/13467581.2022.2109645)
 
-- X. Yang, X. Yu, C. Zhang, <strong>S. Li</strong>, and Q. Niu (2021). MineGPS: Battery-Free Localization Base Station for Coal Mine Environment. <strong>IEEE Communications Letters</strong>. [[Paper]](https://doi.org/10.1109/LCOMM.2021.3081593)
+- Han, Meng, <strong>Jin, Zhineng</strong>, Zexuan Tian, Ying Zhao, Yin Zhang*, Jianwu Xiong, and Yifan Zhang. "Human-centric dynamic accessibility measurement for emergency evacuation: testing and modelling in remote village in China." <strong>Developments in the Built Environment</strong> (2025): 100668.[[Paper]](https://doi.org/10.1016/j.dibe.2025.100668)
 
+- Zhang, Menglong, Yanhong Zheng, Yufei He, <strong>Jin, Zhineng</strong>, Yin Zhang*, and Lijun Shi. "Novel modular PCM wall board for building heating energy efficiency: Material preparation, manufacture and dynamic thermal testing." <strong>Applied Thermal Engineering</strong> 256 (2024): 124168.[[Paper]](https://doi.org/10.1016/j.applthermaleng.2024.124168)

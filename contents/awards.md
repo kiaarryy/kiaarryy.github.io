@@ -1,16 +1,18 @@
 
-- Outstanding Graduate Award (CUMT), 2025.
+- Excellent graduate of Sichuan University in 2025.
 
-- National Scholarship for Graduate Students (Ministry of Education, China), 2024.
+- National Scholarship for Graduate Students (Ministry of Education, China), 2024.
 
-- First-Prize Graduate Academic Scholarship (CUMT), 2024.
+- Outstanding Graduate Student, Sichuan University, 2024.
 
-- First-Prize Graduate Academic Scholarship (CUMT), 2023.
+- Excellent graduate student of Sichuan University, 2023.
 
-- Freshman Scholarship (CUMT), 2022.
+- Provincial "College students Innovation and Entrepreneurship training Program" project, 2021.
 
-- Outstanding Undergraduate Thesis Award (Jiangsu, China), 2022.
+- Comprehensive First-Class Scholarship, Sichuan University, 2021.
 
-- First-Prize Corporate Scholarship (CUMT), 2020.
+- Outstanding students, Sichuan University (twice), 2020 and 2021.
 
-- First-Prize Undergraduate Academic Scholarship (CUMT), 2019.
+- Excellent Volunteer, Sichuan University Library Volunteer Team, 2019.
+
+- Third Prize, “Challenge Cup” Competition, Sichuan University (two times), 2018 and 2019.
