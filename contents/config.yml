@@ -4,12 +4,21 @@ top-section-bg-text: Climate-responsive buildings, HVAC intelligence, and urban 
 hero-kicker: Academic Portfolio
 hero-title: Zhineng Jin
 hero-role: PhD Student, Hong Kong University of Science and Technology
-hero-summary: Researching energy and carbon modeling for buildings and cities, HVAC system intelligence, and thermal comfort in large public buildings.
+hero-summary: Researching energy and carbon modeling for buildings and cities, HVAC system intelligence, smart building design, and thermal comfort in large public buildings.
 hero-primary-link: Publications
 hero-secondary-link: Contact
 home-subtitle: Zhineng Jin | 金治能
 profile-label: Profile
+research-label: Research Highlights
 publications-label: Selected Publications
+news-label: News & Updates
 awards-label: Honors & Awards
 footer-note: Built on GitHub Pages
-copyright-text: '&copy; Zhineng Jin 2023-2025. All Rights Reserved.'
+last-updated: Last updated: May 2026
+copyright-text: '&copy; Zhineng Jin 2023-2026. All Rights Reserved.'
+orcid-link-href: https://orcid.org/0000-0001-6893-8319
+researchgate-link-href: https://www.researchgate.net/profile/Zhineng-Jin
+scholar-link-href: https://scholar.google.com/citations?view_op=search_authors&mauthors=Zhineng+Jin+HKUST&hl=en
+github-link-href: https://github.com/kiaarryy
+cv-link-href: static/assets/Zhineng_Jin_CV.pdf
+email-link-href: mailto:zjinbe@connect.ust.hk

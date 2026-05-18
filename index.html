@@ -4,8 +4,21 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="Academic homepage for Zhineng Jin" />
+    <meta name="description" content="Zhineng Jin is a PhD student at HKUST researching building and urban energy-carbon modeling, HVAC intelligence, and thermal comfort." />
     <meta name="author" content="Zhineng Jin" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://kiaarryy.github.io/" />
+
+    <meta property="og:type" content="profile" />
+    <meta property="og:title" content="Zhineng Jin | Academic Homepage" />
+    <meta property="og:description" content="Academic homepage for Zhineng Jin: building energy, HVAC intelligence, smart building design, and thermal comfort research." />
+    <meta property="og:url" content="https://kiaarryy.github.io/" />
+    <meta property="og:image" content="https://kiaarryy.github.io/screenshot_full.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Zhineng Jin | Academic Homepage" />
+    <meta name="twitter:description" content="Academic homepage for Zhineng Jin: building energy, HVAC intelligence, smart building design, and thermal comfort research." />
+    <meta name="twitter:image" content="https://kiaarryy.github.io/screenshot_full.png" />
+
     <title id="title">Zhineng Jin's Homepage</title>
 
     <link rel="icon" type="image/x-icon" href="static/assets/favicon.ico" />
@@ -17,10 +30,43 @@
     <link type="text/css" href="static/css/styles.css" rel="stylesheet" />
     <link type="text/css" href="static/css/main.css" rel="stylesheet" />
 
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Person",
+            "name": "Zhineng Jin",
+            "alternateName": "金治能",
+            "url": "https://kiaarryy.github.io/",
+            "image": "https://kiaarryy.github.io/static/assets/img/photo.png",
+            "email": "mailto:zjinbe@connect.ust.hk",
+            "jobTitle": "PhD Student",
+            "affiliation": {
+                "@type": "CollegeOrUniversity",
+                "name": "Hong Kong University of Science and Technology"
+            },
+            "alumniOf": {
+                "@type": "CollegeOrUniversity",
+                "name": "Sichuan University"
+            },
+            "sameAs": [
+                "https://orcid.org/0000-0001-6893-8319",
+                "https://www.researchgate.net/profile/Zhineng-Jin",
+                "https://github.com/kiaarryy"
+            ],
+            "knowsAbout": [
+                "Building energy modeling",
+                "HVAC systems",
+                "Thermal comfort",
+                "Smart building design",
+                "Fault detection and diagnosis"
+            ]
+        }
+    </script>
+
     <script type="text/javascript" src="static/js/bootstrap.bundle.min.js"></script>
     <script type="text/javascript" src="static/js/marked.min.js"></script>
     <script>
-        MathJax = {
+        window.MathJax = {
             tex: {
                 inlineMath: [['$', '$'], ['\\(', '\\)']],
                 displayMath: [['$$', '$$'], ['\\[', '\\]']],
@@ -31,7 +77,6 @@
             }
         };
     </script>
-    <script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
     <script type="text/javascript" src="static/js/js-yaml.min.js"></script>
     <script type="text/javascript" src="static/js/scripts.js"></script>
 </head>
@@ -47,30 +92,39 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="#home">Profile</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#research">Research</a></li>
                     <li class="nav-item"><a class="nav-link" href="#publications">Publications</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#news">News</a></li>
                     <li class="nav-item"><a class="nav-link" href="#awards">Awards</a></li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <header class="hero-section" style="background-image: url('static/assets/img/background.jpeg');">
+    <header class="hero-section">
         <div class="container px-4 px-lg-5">
             <div class="hero-grid">
                 <div class="hero-copy">
                     <p id="hero-kicker" class="eyebrow">Academic Portfolio</p>
                     <h1 id="hero-title">Zhineng Jin</h1>
                     <p id="hero-role" class="hero-role">PhD Student, Hong Kong University of Science and Technology</p>
-                    <p id="hero-summary" class="hero-summary">Researching energy and carbon modeling for buildings and cities, HVAC system intelligence, and thermal comfort in large public buildings.</p>
+                    <p id="hero-summary" class="hero-summary">Researching energy and carbon modeling for buildings and cities, HVAC system intelligence, smart building design, and thermal comfort in large public buildings.</p>
                     <div class="hero-actions">
                         <a class="button-primary" href="#publications"><span id="hero-primary-link">Publications</span><i class="bi-arrow-right"></i></a>
                         <a class="button-secondary" href="#home"><span id="hero-secondary-link">Contact</span></a>
+                        <a id="cv-link" class="button-secondary" href="static/assets/Zhineng_Jin_CV.pdf"><span>CV</span><i class="bi-download"></i></a>
+                    </div>
+                    <div class="academic-links" aria-label="Academic profiles">
+                        <a id="orcid-link" href="https://orcid.org/0000-0001-6893-8319"><i class="bi-link-45deg"></i> ORCID</a>
+                        <a id="scholar-link" href="https://scholar.google.com/citations?view_op=search_authors&mauthors=Zhineng+Jin+HKUST&hl=en"><i class="bi-google"></i> Scholar</a>
+                        <a id="researchgate-link" href="https://www.researchgate.net/profile/Zhineng-Jin"><i class="bi-diagram-3"></i> ResearchGate</a>
+                        <a id="github-link" href="https://github.com/kiaarryy"><i class="bi-github"></i> GitHub</a>
                     </div>
                 </div>
                 <aside class="profile-panel" aria-label="Research profile summary">
                     <img class="profile-photo" src="static/assets/img/photo.png" alt="Portrait of Zhineng Jin" />
                     <div class="profile-meta">
-                        <span>HKUST PhD Student</span>
+                        <span>ORCID 0000-0001-6893-8319</span>
                         <strong>Buildings, energy, HVAC, and thermal comfort</strong>
                     </div>
                 </aside>
@@ -92,6 +146,18 @@
             </div>
         </section>
 
+        <section class="content-section research-section" id="research">
+            <div class="container px-4 px-lg-5">
+                <div class="section-shell">
+                    <div class="section-heading">
+                        <span id="research-label" class="section-label">Research Highlights</span>
+                        <h2><i class="bi-lightning-charge"></i> Research</h2>
+                    </div>
+                    <div class="main-body research-body" id="research-md"></div>
+                </div>
+            </div>
+        </section>
+
         <section class="content-section publication-section" id="publications">
             <div class="container px-4 px-lg-5">
                 <div class="section-shell">
@@ -100,6 +166,18 @@
                         <h2><i class="bi-file-text"></i> Publications</h2>
                     </div>
                     <div class="main-body" id="publications-md"></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section news-section" id="news">
+            <div class="container px-4 px-lg-5">
+                <div class="section-shell">
+                    <div class="section-heading">
+                        <span id="news-label" class="section-label">News & Updates</span>
+                        <h2><i class="bi-megaphone"></i> News</h2>
+                    </div>
+                    <div class="main-body" id="news-md"></div>
                 </div>
             </div>
         </section>
@@ -122,11 +200,13 @@
             <div class="footer-grid">
                 <div>
                     <strong id="footer-note">Built on GitHub Pages</strong>
-                    <div id="copyright-text" class="copyright">&copy; Zhineng Jin 2023-2025. All Rights Reserved.</div>
+                    <div id="copyright-text" class="copyright">&copy; Zhineng Jin 2023-2026. All Rights Reserved.</div>
+                    <div id="last-updated" class="copyright">Last updated: May 2026</div>
                 </div>
                 <div class="footer-links">
-                    <a id="github-link" href="https://github.com/kiaarryy">Github</a>
-                    <a id="license-link" href="https://github.com/kiaarryy/kiaarryy.github.io/blob/main/LICENSE">License</a>
+                    <a id="email-link" href="mailto:zjinbe@connect.ust.hk">Email</a>
+                    <a href="#publications">Publications</a>
+                    <a href="#page-top">Top</a>
                 </div>
             </div>
         </div>

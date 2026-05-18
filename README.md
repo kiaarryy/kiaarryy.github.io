@@ -17,6 +17,8 @@ The site is a static GitHub Pages page. It keeps academic content in Markdown an
 |   |-- awards.md
 |   |-- config.yml
 |   |-- home.md
+|   |-- news.md
+|   |-- research.md
 |   `-- publications.md
 |-- static
 |   |-- assets
@@ -30,8 +32,11 @@ The site is a static GitHub Pages page. It keeps academic content in Markdown an
 - Update profile text in `contents/home.md`.
 - Update publication records in `contents/publications.md`.
 - Update awards in `contents/awards.md`.
+- Update news in `contents/news.md`.
+- Update research highlights in `contents/research.md`.
 - Update site title, hero text, and labels in `contents/config.yml`.
 - Replace portrait and background files in `static/assets/img/` if needed.
+- Update CV content in `static/assets/Zhineng_Jin_CV.html` and export `static/assets/Zhineng_Jin_CV.pdf`.
 
 ## Preview Locally
 

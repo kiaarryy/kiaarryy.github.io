@@ -16,3 +16,9 @@
 - Han, Meng, <strong>Jin, Zhineng</strong>, Zexuan Tian, Ying Zhao, Yin Zhang*, Jianwu Xiong, and Yifan Zhang. "Human-centric dynamic accessibility measurement for emergency evacuation: testing and modelling in remote village in China." <strong>Developments in the Built Environment</strong> (2025): 100668.[[Paper]](https://doi.org/10.1016/j.dibe.2025.100668)
 
 - Zhang, Menglong, Yanhong Zheng, Yufei He, <strong>Jin, Zhineng</strong>, Yin Zhang*, and Lijun Shi. "Novel modular PCM wall board for building heating energy efficiency: Material preparation, manufacture and dynamic thermal testing." <strong>Applied Thermal Engineering</strong> 256 (2024): 124168.[[Paper]](https://doi.org/10.1016/j.applthermaleng.2024.124168)
+
+- Meng Han, <strong>Jin, Zhineng</strong>, Ying Zhao, Yin Zhang, Wenyang Han, and Menglong Zhang. "Indoor Thermal Environment Evaluation for Emergency Medical Tents in Heating Season: Onsite Testing and Case Study in China." <strong>Atmosphere</strong> 15, no. 3 (2024): 388.[[Paper]](https://doi.org/10.3390/atmos15030388)
+
+- Xingyu Qi, Yin Zhang, and <strong>Jin, Zhineng</strong>. "Building Energy Efficiency for Indoor Heating Temperature Set-Point: Mechanism and Case Study of Mid-Rise Apartment." <strong>Buildings</strong> 13, no. 5 (2023): 1189.[[Paper]](https://doi.org/10.3390/buildings13051189)
+
+- Yanhong Zheng, Pengfei Si, Yin Zhang, Lijun Shi, Changjiajin Huang, Dongsheng Huang, and <strong>Jin, Zhineng</strong>. "Study on the Effect of Radiant Insulation Panel in Cavity on the Thermal Performance of Broken-Bridge Aluminum Window Frame." <strong>Buildings</strong> 13, no. 1 (2022): 58.[[Paper]](https://doi.org/10.3390/buildings13010058)

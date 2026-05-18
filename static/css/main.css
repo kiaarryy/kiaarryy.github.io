@@ -88,6 +88,7 @@ a:hover {
     position: relative;
     min-height: 92vh;
     padding: 9rem 0 4.5rem;
+    background-image: url("../assets/img/background-optimized.jpg");
     background-position: center;
     background-size: cover;
     overflow: hidden;
@@ -158,6 +159,36 @@ a:hover {
     flex-wrap: wrap;
     gap: 0.9rem;
     margin-top: 2rem;
+}
+
+.academic-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.55rem;
+    margin-top: 1.2rem;
+}
+
+.academic-links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    min-height: 34px;
+    padding: 0.35rem 0.65rem;
+    background: rgba(255, 250, 241, 0.1);
+    border: 1px solid rgba(255, 250, 241, 0.2);
+    color: rgba(255, 250, 241, 0.88);
+    font-size: 0.82rem;
+    font-weight: 750;
+    letter-spacing: 0.04em;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: background 180ms ease, color 180ms ease, transform 180ms ease;
+}
+
+.academic-links a:hover {
+    background: #fffaf1;
+    color: var(--forest);
+    transform: translateY(-1px);
 }
 
 .button-primary,
@@ -251,6 +282,19 @@ a:hover {
         #f5f0e7;
 }
 
+.research-section,
+.awards-section {
+    background:
+        linear-gradient(90deg, rgba(23, 33, 31, 0.035) 1px, transparent 1px) 0 0 / 42px 42px,
+        #fbf7ee;
+}
+
+.news-section {
+    background:
+        linear-gradient(135deg, rgba(216, 162, 58, 0.1), rgba(0, 127, 122, 0.08)),
+        #fffaf1;
+}
+
 .section-shell {
     display: grid;
     grid-template-columns: minmax(220px, 0.35fr) minmax(0, 0.65fr);
@@ -328,7 +372,9 @@ a:hover {
 }
 
 .publication-item,
-.award-item {
+.award-item,
+.research-item,
+.news-item {
     position: relative;
     background: rgba(255, 250, 241, 0.82);
     border: 1px solid var(--line);
@@ -363,6 +409,55 @@ a:hover {
     font-size: 0.9rem;
     font-weight: 750;
     text-transform: uppercase;
+}
+
+.research-body ul {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+.research-item {
+    min-height: 170px;
+    padding: 1.25rem;
+}
+
+.research-item::before {
+    content: "";
+    display: block;
+    width: 48px;
+    height: 3px;
+    margin-bottom: 1rem;
+    background: linear-gradient(90deg, var(--teal), var(--amber));
+}
+
+.research-item strong {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--forest);
+    font-family: "Fraunces", Georgia, serif;
+    font-size: 1.22rem;
+    line-height: 1.18;
+}
+
+.news-item {
+    padding: 1rem 1.2rem 1rem 3.1rem;
+}
+
+.news-item::before {
+    content: "";
+    position: absolute;
+    left: 1rem;
+    top: 1.25rem;
+    width: 0.55rem;
+    height: 0.55rem;
+    border: 2px solid var(--teal);
+    border-radius: 999px;
+    box-shadow: 0 0 0 5px rgba(0, 127, 122, 0.08);
+}
+
+.news-item strong {
+    color: var(--oxblood);
 }
 
 .award-item {
@@ -436,6 +531,10 @@ a:hover {
     .section-heading {
         position: static;
     }
+
+    .research-body ul {
+        grid-template-columns: 1fr;
+    }
 }
 
 @media screen and (max-width: 640px) {
@@ -444,6 +543,7 @@ a:hover {
     }
 
     .hero-actions,
+    .academic-links,
     .footer-grid,
     .footer-links {
         align-items: stretch;
@@ -451,7 +551,8 @@ a:hover {
     }
 
     .button-primary,
-    .button-secondary {
+    .button-secondary,
+    .academic-links a {
         width: 100%;
     }
 
@@ -460,7 +561,13 @@ a:hover {
     }
 
     .publication-item,
-    .award-item {
+    .award-item,
+    .research-item,
+    .news-item {
         padding-right: 1rem;
+    }
+
+    .hero-section {
+        background-image: url("../assets/img/background-mobile.jpg");
     }
 }

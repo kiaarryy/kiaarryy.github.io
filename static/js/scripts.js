@@ -1,8 +1,16 @@
 const contentDir = 'contents/';
 const configFile = 'config.yml';
-const sectionNames = ['home', 'publications', 'awards'];
+const sectionNames = ['home', 'research', 'publications', 'news', 'awards'];
 
 function setConfigValue(key, value) {
+    if (key.endsWith('-href')) {
+        const target = document.getElementById(key.replace(/-href$/, ''));
+        if (target) {
+            target.setAttribute('href', value);
+        }
+        return;
+    }
+
     const target = document.getElementById(key);
     if (!target) {
         console.log(`Unknown config id and value: ${key}, ${value}`);
@@ -16,35 +24,72 @@ function setConfigValue(key, value) {
     target.innerHTML = value;
 }
 
+function decorateExternalLinks(section) {
+    section.querySelectorAll('a[href^="http"]').forEach((link) => {
+        link.setAttribute('target', '_blank');
+        link.setAttribute('rel', 'noopener noreferrer');
+    });
+}
+
+function decorateListItems(section, className) {
+    section.querySelectorAll('li').forEach((item) => {
+        item.classList.add(className);
+    });
+}
+
 function decorateMarkdownSection(name) {
     const section = document.getElementById(`${name}-md`);
     if (!section) return;
 
+    decorateExternalLinks(section);
+
     if (name === 'publications') {
-        section.querySelectorAll('li').forEach((item) => {
-            item.classList.add('publication-item');
-        });
-        section.querySelectorAll('a').forEach((link) => {
-            link.setAttribute('target', '_blank');
-            link.setAttribute('rel', 'noopener noreferrer');
-        });
+        decorateListItems(section, 'publication-item');
     }
 
     if (name === 'awards') {
-        section.querySelectorAll('li').forEach((item) => {
-            item.classList.add('award-item');
-        });
+        decorateListItems(section, 'award-item');
+    }
+
+    if (name === 'research') {
+        decorateListItems(section, 'research-item');
+    }
+
+    if (name === 'news') {
+        decorateListItems(section, 'news-item');
     }
 }
 
-function typesetMath() {
+function markdownHasMath(markdown) {
+    return /(^|[^\\])\$\$|\\\[|\\\(|(^|[^\\])\$[^$\n]+\$/m.test(markdown);
+}
+
+function ensureMathJaxLoaded() {
     if (window.MathJax && MathJax.typesetPromise) {
-        MathJax.typesetPromise().catch((error) => console.log(error));
-        return;
+        return Promise.resolve();
     }
 
-    if (window.MathJax && MathJax.typeset) {
-        MathJax.typeset();
+    if (document.getElementById('MathJax-script')) {
+        return Promise.resolve();
+    }
+
+    return new Promise((resolve, reject) => {
+        const script = document.createElement('script');
+        script.id = 'MathJax-script';
+        script.async = true;
+        script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js';
+        script.onload = resolve;
+        script.onerror = reject;
+        document.head.appendChild(script);
+    });
+}
+
+async function typesetMath(markdown) {
+    if (!markdownHasMath(markdown)) return;
+
+    await ensureMathJaxLoaded();
+    if (window.MathJax && MathJax.typesetPromise) {
+        await MathJax.typesetPromise();
     }
 }
 
@@ -65,7 +110,7 @@ async function loadMarkdown(name) {
     const target = document.getElementById(`${name}-md`);
     target.innerHTML = marked.parse(markdown);
     decorateMarkdownSection(name);
-    typesetMath();
+    await typesetMath(markdown);
 }
 
 window.addEventListener('DOMContentLoaded', () => {
