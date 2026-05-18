@@ -1,4 +1,3 @@
-
 - Excellent graduate of Sichuan University in 2025.
 
 - National Scholarship for Graduate Students (Ministry of Education, China), 2024.
@@ -15,4 +14,4 @@
 
 - Excellent Volunteer, Sichuan University Library Volunteer Team, 2019.
 
-- Third Prize, “Challenge Cup” Competition, Sichuan University (two times), 2018 and 2019.
+- Third Prize, "Challenge Cup" Competition, Sichuan University (two times), 2018 and 2019.

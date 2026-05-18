@@ -1,76 +1,56 @@
+# Zhineng Jin Academic Homepage
 
+![License](https://img.shields.io/github/license/kiaarryy/kiaarryy.github.io)
+![Last Commit](https://img.shields.io/github/last-commit/kiaarryy/kiaarryy.github.io)
 
-![Github Forks](https://img.shields.io/github/forks/senli1073/senli1073.github.io?style=flat)
-![Github Stars](https://img.shields.io/github/stars/senli1073/senli1073.github.io?style=flat)
-![License](https://img.shields.io/github/license/senli1073/senli1073.github.io)
-![Last Commit](https://img.shields.io/github/last-commit/senli1073/senli1073.github.io)
+This repository hosts the personal academic homepage at:
 
-# A simple Github Pages template for personal academic websites.
+https://kiaarryy.github.io
 
-## Preview
-[![Screenshot of the Website](https://raw.githubusercontent.com/senli1073/senli1073.github.io/main/screenshot_full.png)](https://senli1073.github.io/)
+The site is a static GitHub Pages page. It keeps academic content in Markdown and configuration in YAML, so no build step is required.
 
+## Structure
 
-## Introduction
-
-This personal academic website template is based on [bootstrap](https://github.com/StartBootstrap/startbootstrap-new-age).
-
-The template is designed to integrate Markdown files as content input.  There's no need to compile the webpage before deployment.  Upon loading, the Markdown files are automatically parsed and embedded into the page.
-
-This template supports LaTeX formula input. You can use `$...$` and `\(...\)` as delimiters for inline-math, or use `$$...$$` and `\[...\]` as delimiters for display-math. Macros such as `\ref{...}`, `\eqref{...}`, and `\begin{equation}...\end{equation}` are also supported. See [MathJax](https://docs.mathjax.org/en/latest/index.html) for more details.
-
-:milky_way: Demo: https://senli1073.github.io/
-
-
-## Getting Start
-### 1. Fork this repository
-The repository name should be `<username>.github.io`, which will also be your website's URL.
-
-
-### 2. Edit page content
-
-(1) Go to the folder where you want to store your project, and clone the new repository:
-```
-git clone https://github.com/<username>/<username>.github.io.git
-```
-The directory structure is as follows:
-
-```.
+```text
 .
-├── contents
-└── static
-    ├── assets
-    │   └── img
-    ├── css
-    └── js
+|-- contents
+|   |-- awards.md
+|   |-- config.yml
+|   |-- home.md
+|   `-- publications.md
+|-- static
+|   |-- assets
+|   |-- css
+|   `-- js
+`-- index.html
 ```
 
-(2) Modify the content of each section, which corresponds to `contents/*.md`.
+## Edit Content
 
-(3) Adjust the title, copyright information, and other text of the website in `contents/config.yml`
+- Update profile text in `contents/home.md`.
+- Update publication records in `contents/publications.md`.
+- Update awards in `contents/awards.md`.
+- Update site title, hero text, and labels in `contents/config.yml`.
+- Replace portrait and background files in `static/assets/img/` if needed.
 
-(4) Replace background image and photo with new ones for your web pages in `static/assets/img/`
+## Preview Locally
 
-(5) Push it: 
+Run a static server from the repository root:
+
+```powershell
+python -m http.server 8000
 ```
-git commit -am 'init'
-git push
+
+Then open:
+
+```text
+http://localhost:8000
 ```
 
-### 3. Setup
-(1) Under your repository name, click `Settings`.
+## Deployment
 
-(2) In the "Code and automation" section of the sidebar, click `Pages`.
-
-(3) Under "Build and deployment", under "Source", select Deploy from a branch. Then, use the branch dropdown menu and select a publishing source.
-
-### 4. Enjoy
-
-Fire up a browser and go to `https://<username>.github.io`
-
-> Note that it can take up to 10 minutes for changes to your site to publish after you push the changes to GitHub.
-
+GitHub Pages serves this repository directly from the `main` branch. After committing and pushing changes, the public site may take several minutes to refresh.
 
 ## License
 
-Copyright Sen Li, 2023-2025. Licensed under an MIT license. You can copy and mess with this template.
+This project is based on an MIT-licensed academic homepage template.

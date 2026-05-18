@@ -1,17 +1,17 @@
-
 [![kiaarryy](https://img.shields.io/badge/kiaarryy-github-blue?logo=github)](https://github.com/kiaarryy?tab=stars)
 
-He is currently a PhD student at the Hong Kong University of Science and Technology (HKUST).
+Zhineng Jin is currently a PhD student at the Hong Kong University of Science and Technology (HKUST).
 
 #### Contact
 
-Email: zjinbe@connect.ust.hk
-18286057381@163.com
+Email: [zjinbe@connect.ust.hk](mailto:zjinbe@connect.ust.hk)<br>
+Alternative email: [18286057381@163.com](mailto:18286057381@163.com)
 
 #### Education
-M.Sc., Heating, Gas supply, Ventilation and Air conditioning Works (major), Sichuan University, Chengdu, China, Sep,2022-2025.\
-BS., Building Environment and Energy Application Engineering (major), Sichuan University, Chengdu, China, Sep,2018-Jun,2022.
+
+M.Sc., Heating, Gas supply, Ventilation and Air conditioning Works, Sichuan University, Chengdu, China, Sep. 2022-Jun. 2025.<br>
+B.S., Building Environment and Energy Application Engineering, Sichuan University, Chengdu, China, Sep. 2018-Jun. 2022.
 
 #### Research Interests
-Energy & carbon modeling for buildings and cities. HVAC modeling, and thermal comfort in large public buildings
-HVAC System FDD(Fault Diagnosis and Detection), Data management
+
+Energy and carbon modeling for buildings and cities; HVAC modeling; thermal comfort in large public buildings; HVAC system FDD (Fault Detection and Diagnosis); data management.

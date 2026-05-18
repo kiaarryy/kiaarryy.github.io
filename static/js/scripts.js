@@ -1,65 +1,93 @@
+const contentDir = 'contents/';
+const configFile = 'config.yml';
+const sectionNames = ['home', 'publications', 'awards'];
 
+function setConfigValue(key, value) {
+    const target = document.getElementById(key);
+    if (!target) {
+        console.log(`Unknown config id and value: ${key}, ${value}`);
+        return;
+    }
 
-const content_dir = 'contents/'
-const config_file = 'config.yml'
-const section_names = ['home', 'publications', 'awards']
+    if (key === 'title') {
+        document.title = value;
+    }
 
+    target.innerHTML = value;
+}
 
-window.addEventListener('DOMContentLoaded', event => {
+function decorateMarkdownSection(name) {
+    const section = document.getElementById(`${name}-md`);
+    if (!section) return;
 
-    // Activate Bootstrap scrollspy on the main nav element
+    if (name === 'publications') {
+        section.querySelectorAll('li').forEach((item) => {
+            item.classList.add('publication-item');
+        });
+        section.querySelectorAll('a').forEach((link) => {
+            link.setAttribute('target', '_blank');
+            link.setAttribute('rel', 'noopener noreferrer');
+        });
+    }
+
+    if (name === 'awards') {
+        section.querySelectorAll('li').forEach((item) => {
+            item.classList.add('award-item');
+        });
+    }
+}
+
+function typesetMath() {
+    if (window.MathJax && MathJax.typesetPromise) {
+        MathJax.typesetPromise().catch((error) => console.log(error));
+        return;
+    }
+
+    if (window.MathJax && MathJax.typeset) {
+        MathJax.typeset();
+    }
+}
+
+async function loadConfig() {
+    const response = await fetch(contentDir + configFile);
+    if (!response.ok) throw new Error(`Cannot load ${configFile}: ${response.status}`);
+
+    const text = await response.text();
+    const yml = jsyaml.load(text);
+    Object.keys(yml).forEach((key) => setConfigValue(key, yml[key]));
+}
+
+async function loadMarkdown(name) {
+    const response = await fetch(`${contentDir}${name}.md`);
+    if (!response.ok) throw new Error(`Cannot load ${name}.md: ${response.status}`);
+
+    const markdown = await response.text();
+    const target = document.getElementById(`${name}-md`);
+    target.innerHTML = marked.parse(markdown);
+    decorateMarkdownSection(name);
+    typesetMath();
+}
+
+window.addEventListener('DOMContentLoaded', () => {
     const mainNav = document.body.querySelector('#mainNav');
     if (mainNav) {
         new bootstrap.ScrollSpy(document.body, {
             target: '#mainNav',
-            offset: 74,
+            offset: 90,
         });
-    };
+    }
 
-    // Collapse responsive navbar when toggler is visible
     const navbarToggler = document.body.querySelector('.navbar-toggler');
-    const responsiveNavItems = [].slice.call(
-        document.querySelectorAll('#navbarResponsive .nav-link')
-    );
-    responsiveNavItems.map(function (responsiveNavItem) {
+    const responsiveNavItems = Array.from(document.querySelectorAll('#navbarResponsive .nav-link'));
+    responsiveNavItems.forEach((responsiveNavItem) => {
         responsiveNavItem.addEventListener('click', () => {
-            if (window.getComputedStyle(navbarToggler).display !== 'none') {
+            if (navbarToggler && window.getComputedStyle(navbarToggler).display !== 'none') {
                 navbarToggler.click();
             }
         });
     });
 
-
-    // Yaml
-    fetch(content_dir + config_file)
-        .then(response => response.text())
-        .then(text => {
-            const yml = jsyaml.load(text);
-            Object.keys(yml).forEach(key => {
-                try {
-                    document.getElementById(key).innerHTML = yml[key];
-                } catch {
-                    console.log("Unknown id and value: " + key + "," + yml[key].toString())
-                }
-
-            })
-        })
-        .catch(error => console.log(error));
-
-
-    // Marked
-    marked.use({ mangle: false, headerIds: false })
-    section_names.forEach((name, idx) => {
-        fetch(content_dir + name + '.md')
-            .then(response => response.text())
-            .then(markdown => {
-                const html = marked.parse(markdown);
-                document.getElementById(name + '-md').innerHTML = html;
-            }).then(() => {
-                // MathJax
-                MathJax.typeset();
-            })
-            .catch(error => console.log(error));
-    })
-
-}); 
+    marked.use({ mangle: false, headerIds: false });
+    loadConfig().catch((error) => console.log(error));
+    sectionNames.forEach((name) => loadMarkdown(name).catch((error) => console.log(error)));
+});
