@@ -25,7 +25,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,650;9..144,760&family=Source+Sans+3:ital,wght@0,400;0,500;0,650;0,750;1,400&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,650;9..144,760&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@500;700&display=swap" rel="stylesheet" />
 
     <link type="text/css" href="static/css/styles.css" rel="stylesheet" />
     <link type="text/css" href="static/css/main.css" rel="stylesheet" />
@@ -83,6 +83,25 @@
 </head>
 
 <body id="page-top">
+    <div class="language-gateway" id="language-gateway" aria-label="Choose site language">
+        <div class="language-gateway__backdrop"></div>
+        <div class="language-gateway__panel spotlight-card">
+            <p class="eyebrow">Zhineng Jin | 金治能</p>
+            <h1>Zhineng Jin's Personal Website</h1>
+            <p id="language-gateway-copy">Academic homepage for building energy, HVAC intelligence, smart building design, and thermal comfort research.</p>
+            <div class="language-gateway__actions" role="group" aria-label="Language options">
+                <button class="language-choice" type="button" data-set-lang="en">
+                    <span>English</span>
+                    <i class="bi-arrow-right"></i>
+                </button>
+                <button class="language-choice" type="button" data-set-lang="zh">
+                    <span>中文主页</span>
+                    <i class="bi-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
     <nav class="header navbar navbar-expand-lg fixed-top" id="mainNav">
         <div class="container px-4 px-lg-5">
             <a id="page-top-title" class="navbar-brand" href="#page-top">Zhineng Jin</a>
@@ -92,12 +111,17 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="#home">Profile</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#research">Research</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#publications">Publications</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#news">News</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#awards">Awards</a></li>
+                    <li class="nav-item"><a id="nav-profile" class="nav-link" href="#home">Profile</a></li>
+                    <li class="nav-item"><a id="nav-github" class="nav-link" href="#github">GitHub</a></li>
+                    <li class="nav-item"><a id="nav-research" class="nav-link" href="#research">Research</a></li>
+                    <li class="nav-item"><a id="nav-publications" class="nav-link" href="#publications">Publications</a></li>
+                    <li class="nav-item"><a id="nav-news" class="nav-link" href="#news">News</a></li>
+                    <li class="nav-item"><a id="nav-awards" class="nav-link" href="#awards">Awards</a></li>
                 </ul>
+                <div class="language-switcher" aria-label="Switch language">
+                    <button class="lang-toggle is-active" type="button" data-set-lang="en">EN</button>
+                    <button class="lang-toggle" type="button" data-set-lang="zh">中文</button>
+                </div>
             </div>
         </div>
     </nav>
@@ -147,6 +171,42 @@
             </div>
         </section>
 
+        <section class="content-section github-section" id="github">
+            <div class="container px-4 px-lg-5">
+                <div class="section-shell">
+                    <div class="section-heading">
+                        <span id="github-label" class="section-label">Live GitHub Activity</span>
+                        <h2><i class="bi-github"></i> GitHub</h2>
+                    </div>
+                    <div class="github-body">
+                        <div class="github-overview spotlight-card">
+                            <div>
+                                <p id="github-kicker" class="github-kicker">Synchronized from GitHub public data</p>
+                                <h3 id="github-title">Open-source work and recent repository activity</h3>
+                            </div>
+                            <a id="github-profile-cta" class="github-profile-cta" href="https://github.com/kiaarryy" target="_blank" rel="noopener noreferrer">
+                                <span>View GitHub</span>
+                                <i class="bi-box-arrow-up-right"></i>
+                            </a>
+                        </div>
+                        <div class="github-stats" id="github-stats" aria-live="polite">
+                            <div class="github-stat"><span>Repos</span><strong>--</strong></div>
+                            <div class="github-stat"><span>Followers</span><strong>--</strong></div>
+                            <div class="github-stat"><span>Updated</span><strong>--</strong></div>
+                        </div>
+                        <div class="github-heatmap spotlight-card">
+                            <div class="github-heatmap__header">
+                                <span id="github-heatmap-label">Contribution Calendar</span>
+                                <span id="github-live-badge">Live</span>
+                            </div>
+                            <img src="https://ghchart.rshah.org/007f7a/kiaarryy" alt="GitHub contribution chart for kiaarryy" loading="lazy" />
+                        </div>
+                        <div class="repo-list" id="repo-list" aria-live="polite"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section class="content-section research-section" id="research">
             <div class="container px-4 px-lg-5">
                 <div class="section-shell">
@@ -164,7 +224,7 @@
                 <div class="section-shell">
                     <div class="section-heading">
                         <span id="publications-label" class="section-label">Selected Publications</span>
-                        <h2><i class="bi-file-text"></i> Publications</h2>
+                        <h2><i class="bi-file-text"></i> <span id="publications-heading">Journal Papers</span></h2>
                     </div>
                     <div class="main-body" id="publications-md"></div>
                 </div>
