@@ -270,6 +270,7 @@ const publicationRecords = [
         match: 'Towards Climate-Responsive Atrium Design',
         title: 'Towards Climate-Responsive Atrium Design: A Parametric Multi-Climate Analysis Using Meta-Sample Modeling',
         authors: 'Jin, Zhineng; Hongli Sun; Junkang Song; Wenke Zhong; Zishuang Xia; Hanjie Zheng; Changqi Wen; Bin Xu; Borong Lin',
+        firstAffiliation: 'Department of Civil and Environmental Engineering, The Hong Kong University of Science and Technology, Hong Kong, China',
         journal: 'Under Review',
         year: 'Under Review',
         cover: '',
@@ -298,6 +299,7 @@ const publicationRecords = [
         match: 'Novel integrated meta-sampling approach',
         title: 'Novel integrated meta-sampling approach for smart building design: real-time data analytics and energy performance optimization practice',
         authors: 'Jin, Zhineng; Hongli Sun; Junkang Song; Yanhong Zheng; Hanjie Zheng; Menglong Zhang; Borong Lin',
+        firstAffiliation: 'College of Architecture and Environment, Sichuan University, Chengdu 610065, China',
         journal: 'Energy',
         year: '2025',
         cover: 'static/assets/img/journals/energy.jpg',
@@ -326,6 +328,7 @@ const publicationRecords = [
         match: 'Indoor-outdoor interactive thermal response',
         title: 'Indoor-outdoor interactive thermal response in public building: onsite data collection and classification through cluster algorithm',
         authors: 'Jin, Zhineng; Yin Zhang; Hongli Sun; Meng Han; Yanhong Zheng; Ying Zhao; Wenyang Han; Menglong Zhang; Bin Xu; Zequn Zhang; Borong Lin',
+        firstAffiliation: 'College of Architecture and Environment, Sichuan University, Chengdu 610065, China',
         journal: 'Energy and Buildings',
         year: '2025',
         cover: 'static/assets/img/journals/energy-and-buildings.jpg',
@@ -354,6 +357,7 @@ const publicationRecords = [
         match: 'Indoor thermal nonuniformity',
         title: 'Indoor thermal nonuniformity of atrium-centered public building: Monitoring and diagnosis for energy saving',
         authors: 'Jin, Zhineng; Yin Zhang; Hongli Sun; Meng Han; Yanhong Zheng; Ying Zhao; Wenyang Han; Menglong Zhang',
+        firstAffiliation: 'College of Architecture and Environment, Sichuan University, Chengdu 610065, China',
         journal: 'Case Studies in Thermal Engineering',
         year: '2024',
         cover: 'static/assets/img/journals/case-studies-in-thermal-engineering.jpg',
@@ -382,6 +386,7 @@ const publicationRecords = [
         match: 'Dehumidification load ratio',
         title: 'Dehumidification load ratio: influence mechanism on air conditioning and energy saving potential analysis for building cooling',
         authors: 'Jin, Zhineng; Yanhong Zheng; Dongsheng Huang; Yin Zhang; Siqiang Lv; Hongli Sun',
+        firstAffiliation: 'College of Architecture and Environment, Sichuan University, Chengdu 610065, China',
         journal: 'Sustainable Cities and Society',
         year: '2023',
         cover: 'static/assets/img/journals/sustainable-cities-and-society.jpg',
@@ -410,6 +415,7 @@ const publicationRecords = [
         match: 'A novel method for building air conditioning energy saving potential',
         title: 'A novel method for building air conditioning energy saving potential pre-estimation based on thermodynamic perfection index for space cooling',
         authors: 'Jin, Zhineng; Yanhong Zheng; Yin Zhang',
+        firstAffiliation: 'College of Architecture and Environment, Sichuan University, Chengdu, China',
         journal: 'Journal of Asian Architecture and Building Engineering',
         year: '2023',
         cover: 'static/assets/img/journals/journal-of-asian-architecture-and-building-engineering.jfif',
@@ -438,6 +444,7 @@ const publicationRecords = [
         match: 'Human-centric dynamic accessibility measurement',
         title: 'Human-centric dynamic accessibility measurement for emergency evacuation: testing and modeling in remote village in China',
         authors: 'Meng Han; Zhineng Jin; Zexuan Tian; Ying Zhao; Yin Zhang; Jianwu Xiong; Yifan Zhang',
+        firstAffiliation: 'School of Architecture, Southwest Minzu University, Chengdu 610225, China',
         journal: 'Developments in the Built Environment',
         year: '2025',
         cover: 'static/assets/img/journals/developments-in-the-built-environment.jpg',
@@ -466,6 +473,7 @@ const publicationRecords = [
         match: 'Novel modular PCM wall board',
         title: 'Novel modular PCM wall board for building heating energy efficiency: Material preparation, manufacture and dynamic thermal testing',
         authors: 'Menglong Zhang; Yanhong Zheng; Yufei He; Zhineng Jin; Yin Zhang; Lijun Shi',
+        firstAffiliation: 'School of Architecture, Southwest Minzu University, Chengdu 610225, China',
         journal: 'Applied Thermal Engineering',
         year: '2024',
         cover: 'static/assets/img/journals/applied-thermal-engineering.jpg',
@@ -494,6 +502,7 @@ const publicationRecords = [
         match: 'Indoor Thermal Environment Evaluation for Emergency Medical Tents',
         title: 'Indoor Thermal Environment Evaluation for Emergency Medical Tents in Heating Season: Onsite Testing and Case Study in China',
         authors: 'Meng Han; Zhineng Jin; Ying Zhao; Yin Zhang; Wenyang Han; Menglong Zhang',
+        firstAffiliation: 'School of Architecture, Southwest Minzu University, Chengdu 610225, China',
         journal: 'Atmosphere',
         year: '2024',
         cover: 'static/assets/img/journals/atmosphere.webp',
@@ -522,6 +531,7 @@ const publicationRecords = [
         match: 'Building Energy Efficiency for Indoor Heating Temperature Set-Point',
         title: 'Building Energy Efficiency for Indoor Heating Temperature Set-Point: Mechanism and Case Study of Mid-Rise Apartment',
         authors: 'Xingyu Qi; Yin Zhang; Zhineng Jin',
+        firstAffiliation: 'School of Public Administration, Southwest Minzu University, Chengdu 610225, China',
         journal: 'Buildings',
         year: '2023',
         cover: 'static/assets/img/journals/buildings.png',
@@ -550,6 +560,7 @@ const publicationRecords = [
         match: 'Study on the Effect of Radiant Insulation Panel',
         title: 'Study on the Effect of Radiant Insulation Panel in Cavity on the Thermal Performance of Broken-Bridge Aluminum Window Frame',
         authors: 'Yanhong Zheng; Pengfei Si; Yin Zhang; Lijun Shi; Changjiajin Huang; Dongsheng Huang; Zhineng Jin',
+        firstAffiliation: 'College of Architecture and Environment, Sichuan University, Chengdu 610065, China',
         journal: 'Buildings',
         year: '2022',
         cover: 'static/assets/img/journals/buildings.png',
@@ -670,7 +681,9 @@ function getPublicationLabels() {
 
 function renderPublicationPanel(label, content, options = {}) {
     const open = options.open ? ' open' : '';
-    const body = Array.isArray(content)
+    const body = options.html
+        ? content
+        : Array.isArray(content)
         ? `<ul class="publication-highlights">${content.map((item) => `<li>${item}</li>`).join('')}</ul>`
         : `<p>${content}</p>`;
 
@@ -680,6 +693,21 @@ function renderPublicationPanel(label, content, options = {}) {
             <div class="publication-panel__content">${body}</div>
         </details>
     `;
+}
+
+function formatPublicationAuthors(meta, fallbackText) {
+    const rawAuthors = meta ? meta.authors : fallbackText.replace(/\s+".*$/, '');
+    const authorNames = rawAuthors.split(';').map((name) => cleanText(name)).filter(Boolean);
+    const authorLine = authorNames.map((name, index) => {
+        const isSelf = /^(Jin,\s*Zhineng|Zhineng\s+Jin)$/i.test(name);
+        const displayName = isSelf ? `<strong class="self-author">${name}</strong>` : name;
+        return `${displayName}${index === 0 && meta && meta.firstAffiliation ? '<sup>a</sup>' : ''}`;
+    }).join(', ');
+    const affiliation = meta && meta.firstAffiliation
+        ? `<span class="publication-affiliation"><strong>a</strong> ${meta.firstAffiliation}</span>`
+        : '';
+
+    return `<div class="publication-authors">${authorLine}</div>${affiliation}`;
 }
 
 function createPublicationDetail(meta, fallbackText) {
@@ -693,11 +721,11 @@ function createPublicationDetail(meta, fallbackText) {
     ];
     const abstract = localized ? localized.abstract : (getLang() === 'zh' ? '该条目保留原始论文信息，并提供 DOI 或论文链接以便进一步阅读。' : 'This entry keeps the original publication record and provides a DOI or paper link for further reading.');
     const citation = localized ? localized.citation : fallbackText;
-    const authors = meta ? meta.authors : fallbackText.replace(/\s+".*$/, '');
+    const authors = formatPublicationAuthors(meta, fallbackText);
 
     return `
         <div class="publication-panels">
-            ${renderPublicationPanel(labels.authors, authors, { open: true })}
+            ${renderPublicationPanel(labels.authors, authors, { open: true, html: true })}
             ${renderPublicationPanel(labels.highlights, highlights)}
             ${renderPublicationPanel(labels.abstract, abstract)}
             ${renderPublicationPanel(labels.citation, citation)}
