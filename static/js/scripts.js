@@ -3,8 +3,10 @@ const configFile = 'config.yml';
 const sectionNames = ['home', 'research', 'publications', 'news', 'awards'];
 const githubUser = 'kiaarryy';
 const requestedLang = new URLSearchParams(window.location.search).get('lang');
+const contributionRefreshMs = 5 * 60 * 1000;
 
 let currentLang = requestedLang || localStorage.getItem('site-language') || '';
+let contributionRefreshTimer = null;
 
 const i18n = {
     en: {
@@ -858,6 +860,45 @@ function formatDate(value) {
     });
 }
 
+function formatRefreshTime(value) {
+    return value.toLocaleTimeString(getLang() === 'zh' ? 'zh-CN' : 'en-US', {
+        hour: '2-digit',
+        minute: '2-digit',
+    });
+}
+
+function refreshContributionChart() {
+    const chart = document.getElementById('github-contribution-chart');
+    if (!chart) return;
+
+    const refreshedAt = new Date();
+    const base = chart.dataset.chartBase || `https://ghchart.rshah.org/007f7a/${githubUser}`;
+    const url = new URL(base, window.location.href);
+    url.searchParams.set('refresh', String(refreshedAt.getTime()));
+    chart.src = url.toString();
+    chart.alt = getLang() === 'zh'
+        ? `${githubUser} 的 GitHub 贡献热力图，刷新于 ${formatRefreshTime(refreshedAt)}`
+        : `GitHub contribution chart for ${githubUser}, refreshed at ${formatRefreshTime(refreshedAt)}`;
+
+    const badge = document.getElementById('github-live-badge');
+    if (badge) {
+        badge.textContent = `${i18n[getLang()].githubLiveBadge} · ${formatRefreshTime(refreshedAt)}`;
+        badge.title = getLang() === 'zh'
+            ? '贡献图已绕过浏览器缓存重新请求'
+            : 'Contribution chart re-requested with cache busting';
+    }
+}
+
+function setupContributionRefresh() {
+    refreshContributionChart();
+    if (!contributionRefreshTimer) {
+        contributionRefreshTimer = window.setInterval(refreshContributionChart, contributionRefreshMs);
+        document.addEventListener('visibilitychange', () => {
+            if (!document.hidden) refreshContributionChart();
+        });
+    }
+}
+
 function renderGithubStats(user) {
     const labels = i18n[getLang()];
     const stats = [
@@ -890,6 +931,8 @@ function renderRepos(repos) {
 }
 
 async function loadGithubActivity() {
+    setupContributionRefresh();
+
     try {
         const [userResponse, repoResponse] = await Promise.all([
             fetch(`https://api.github.com/users/${githubUser}`),
