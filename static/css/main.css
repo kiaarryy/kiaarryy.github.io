@@ -131,9 +131,7 @@ a:hover {
     position: relative;
     min-height: 92vh;
     padding: 9rem 0 4.5rem;
-    background-image: url("../assets/img/background-optimized.jpg");
-    background-position: center;
-    background-size: cover;
+    background: #0b1110;
     overflow: hidden;
 }
 
@@ -144,7 +142,7 @@ a:hover {
     display: grid;
     place-items: center;
     padding: 1.25rem;
-    background: rgba(11, 20, 18, 0.48);
+    background: #0b1110;
     backdrop-filter: blur(14px);
     transition: opacity 260ms ease, visibility 260ms ease;
 }
@@ -159,39 +157,37 @@ a:hover {
     position: absolute;
     inset: 0;
     background:
-        radial-gradient(circle at 20% 22%, rgba(216, 162, 58, 0.22), transparent 28%),
-        radial-gradient(circle at 78% 66%, rgba(0, 127, 122, 0.22), transparent 32%);
+        radial-gradient(circle at 20% 22%, rgba(216, 162, 58, 0.18), transparent 34%),
+        radial-gradient(circle at 78% 66%, rgba(15, 143, 137, 0.18), transparent 36%);
 }
 
-.ferrofluid-stage {
+.liquid-ether-stage {
     position: absolute;
     inset: 0;
     overflow: hidden;
     pointer-events: none;
 }
 
-.ferrofluid-stage--gateway {
+.liquid-ether-stage--gateway {
     z-index: 0;
-    opacity: 0.58;
-    mix-blend-mode: screen;
+    opacity: 1;
 }
 
-.ferrofluid-stage--hero {
+.liquid-ether-stage--hero {
     z-index: 1;
-    opacity: 0.76;
-    mix-blend-mode: screen;
+    opacity: 1;
 }
 
-.ferrofluid-stage::after {
+.liquid-ether-stage::after {
     content: "";
     position: absolute;
     inset: 0;
     background:
-        linear-gradient(90deg, rgba(10, 20, 18, 0.22), transparent 45%, rgba(10, 20, 18, 0.18)),
-        radial-gradient(circle at 72% 42%, rgba(255, 250, 241, 0.18), transparent 34%);
+        linear-gradient(180deg, rgba(11, 17, 16, 0.22), rgba(11, 17, 16, 0.74)),
+        radial-gradient(circle at 50% 42%, transparent 0%, rgba(11, 17, 16, 0.56) 70%);
 }
 
-.ferrofluid-canvas {
+.liquid-ether-canvas {
     display: block;
     width: 100%;
     height: 100%;
@@ -202,14 +198,15 @@ a:hover {
     z-index: 1;
     width: min(720px, 100%);
     padding: clamp(1.5rem, 5vw, 3rem);
-    background: rgba(255, 250, 241, 0.94);
-    border: 1px solid rgba(255, 250, 241, 0.65);
-    box-shadow: 0 34px 100px rgba(0, 0, 0, 0.32);
+    background: rgba(12, 20, 19, 0.78);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    box-shadow: 0 34px 100px rgba(0, 0, 0, 0.36);
+    backdrop-filter: blur(18px);
 }
 
 .language-gateway__panel h1 {
     margin: 0;
-    color: var(--ink);
+    color: #ffffff;
     font-family: "Fraunces", Georgia, serif;
     font-size: clamp(2.4rem, 7vw, 5rem);
     line-height: 0.96;
@@ -218,7 +215,7 @@ a:hover {
 .language-gateway__panel p:not(.eyebrow) {
     max-width: 560px;
     margin: 1.1rem 0 0;
-    color: var(--muted);
+    color: rgba(255, 255, 255, 0.72);
     font-size: 1.08rem;
     line-height: 1.65;
 }
@@ -237,16 +234,16 @@ a:hover {
     justify-content: space-between;
     gap: 1.25rem;
     padding: 0.8rem 1rem;
-    border: 1px solid var(--forest);
-    background: var(--forest);
-    color: #fffaf1;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    background: #ffffff;
+    color: #14111c;
     font-weight: 750;
     letter-spacing: 0;
     transition: transform 180ms ease, background 180ms ease;
 }
 
 .language-choice:hover {
-    background: var(--teal);
+    background: rgba(255, 255, 255, 0.82);
     transform: translateY(-2px);
 }
 
@@ -255,9 +252,9 @@ a:hover {
     position: absolute;
     inset: 0;
     z-index: 0;
-    background:
-        linear-gradient(105deg, rgba(10, 20, 18, 0.92) 0%, rgba(14, 42, 38, 0.78) 45%, rgba(23, 33, 31, 0.32) 100%),
-        linear-gradient(180deg, transparent 72%, #fbf7ee 100%);
+        background:
+        linear-gradient(180deg, rgba(11, 17, 16, 0.18) 0%, rgba(11, 17, 16, 0.48) 58%, #fbf7ee 100%),
+        radial-gradient(circle at 46% 30%, rgba(15, 143, 137, 0.1), transparent 34%);
 }
 
 .hero-section .container {
@@ -273,7 +270,7 @@ a:hover {
 }
 
 .hero-copy {
-    max-width: 760px;
+    max-width: 800px;
     color: #fffaf1;
 }
 
@@ -306,7 +303,7 @@ a:hover {
 .hero-summary {
     max-width: 670px;
     margin: 1.15rem 0 0;
-    color: rgba(255, 250, 241, 0.78);
+    color: rgba(255, 255, 255, 0.76);
     font-size: 1.12rem;
     line-height: 1.7;
 }
@@ -331,9 +328,9 @@ a:hover {
     gap: 0.4rem;
     min-height: 34px;
     padding: 0.35rem 0.65rem;
-    background: rgba(255, 250, 241, 0.1);
-    border: 1px solid rgba(255, 250, 241, 0.2);
-    color: rgba(255, 250, 241, 0.88);
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    color: rgba(255, 255, 255, 0.82);
     font-size: 0.82rem;
     font-weight: 750;
     letter-spacing: 0.04em;
@@ -343,8 +340,8 @@ a:hover {
 }
 
 .academic-links a:hover {
-    background: #fffaf1;
-    color: var(--forest);
+    background: #ffffff;
+    color: #14111c;
     transform: translateY(-1px);
 }
 
@@ -356,8 +353,8 @@ a:hover {
     justify-content: center;
     gap: 0.6rem;
     padding: 0.75rem 1.1rem;
-    border: 1px solid rgba(255, 250, 241, 0.28);
-    color: #fffaf1;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    color: #ffffff;
     font-size: 0.88rem;
     font-weight: 750;
     letter-spacing: 0.06em;
@@ -367,28 +364,30 @@ a:hover {
 }
 
 .button-primary {
-    background: var(--amber);
-    border-color: var(--amber);
-    color: #1e1a12;
+    background: #ffffff;
+    border-color: #ffffff;
+    color: #14111c;
 }
 
 .button-secondary {
-    background: rgba(255, 250, 241, 0.08);
+    background: rgba(255, 255, 255, 0.06);
 }
 
 .button-primary:hover,
 .button-secondary:hover {
-    color: #1e1a12;
-    background: #fffaf1;
-    border-color: #fffaf1;
+    color: #ffffff;
+    background: rgba(15, 143, 137, 0.48);
+    border-color: rgba(255, 255, 255, 0.24);
     transform: translateY(-2px);
 }
 
 .profile-panel {
     align-self: end;
-    background: rgba(255, 250, 241, 0.94);
-    border: 1px solid rgba(255, 250, 241, 0.55);
-    box-shadow: var(--shadow);
+    overflow: hidden;
+    background: rgba(12, 20, 19, 0.54);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.28);
+    backdrop-filter: blur(16px);
 }
 
 .profile-photo {
@@ -402,11 +401,11 @@ a:hover {
     display: grid;
     gap: 0.35rem;
     padding: 1.25rem;
-    border-top: 5px solid var(--amber);
+    border-top: 5px solid rgba(255, 255, 255, 0.72);
 }
 
 .profile-meta span {
-    color: var(--muted);
+    color: rgba(255, 255, 255, 0.58);
     font-size: 0.82rem;
     font-weight: 750;
     letter-spacing: 0.1em;
@@ -414,7 +413,7 @@ a:hover {
 }
 
 .profile-meta strong {
-    color: var(--forest);
+    color: #ffffff;
     font-family: "Fraunces", Georgia, serif;
     font-size: 1.25rem;
     line-height: 1.25;
@@ -423,7 +422,7 @@ a:hover {
 .hero-field {
     max-width: 780px;
     margin: 4rem 0 0;
-    color: rgba(255, 250, 241, 0.58);
+    color: rgba(255, 255, 255, 0.44);
     font-family: "Fraunces", Georgia, serif;
     font-size: clamp(1.2rem, 3vw, 2rem);
     line-height: 1.25;
@@ -1076,7 +1075,7 @@ a:hover {
     }
 
     .hero-section {
-        background-image: url("../assets/img/background-mobile.jpg");
+        background: #0b1110;
     }
 }
 
