@@ -4,6 +4,8 @@
 
 #### 已发表
 
+- <strong>Jin, Zhineng</strong> and Zhe Wang. "AutoModelling: From BMS Operational Data to Validated Modelica Models for Chillers." <strong>Energy</strong> (2026): 141700. [[Paper]](https://doi.org/10.1016/j.energy.2026.141700)
+
 - <strong>Jin, Zhineng</strong>, Hongli Sun*, Junkang Song, Yanhong Zheng, Hanjie Zheng, Menglong Zhang, and Borong Lin. "Novel integrated meta-sampling approach for smart building design: real-time data analytics and energy performance optimization practice." <strong>Energy</strong>(2025): 137501.[[Paper]](https://doi.org/10.1016/j.energy.2025.137501)
 
 - <strong>Jin, Zhineng</strong>, Hongli Sun*, Meng Han, Yanhong Zheng, Ying Zhao, Wenyang Han, Menglong Zhang, Bin Xu, Zequn Zhang, and Borong Lin. "Indoor-outdoor interactive thermal response in public building: onsite data collection and classification through cluster algorithm." <strong>Energy and Buildings</strong> 328 (2025): 115175. [[Paper]](https://doi.org/10.1016/j.enbuild.2024.115175)

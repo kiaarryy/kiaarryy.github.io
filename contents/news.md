@@ -1,3 +1,7 @@
+- **2026** — Published *AutoModelling: From BMS Operational Data to Validated Modelica Models for Chillers* in *Energy*.
+
+- **2026** — Delivered an oral presentation at Building Simulation BAS 2026, Hong Kong SAR, China, June 11-13, 2026: *Steady-State Detection for Chiller Modelling: A task-grounded benchmark using Modelica-based validation residuals*.
+
 - **2025** — Started PhD study at the Hong Kong University of Science and Technology.
 
 - **2025** — Published work on smart building design and real-time energy performance optimization in *Energy*.

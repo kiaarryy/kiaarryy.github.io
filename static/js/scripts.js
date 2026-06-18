@@ -36,7 +36,7 @@ const i18n = {
         newsLabel: 'News & Updates',
         awardsLabel: 'Honors & Awards',
         footerNote: 'Built on GitHub Pages',
-        lastUpdated: 'Last updated: May 2026',
+        lastUpdated: 'Last updated: June 2026',
         statsRepos: 'Repos',
         statsFollowers: 'Followers',
         statsUpdated: 'Updated',
@@ -75,7 +75,7 @@ const i18n = {
         newsLabel: '最新动态',
         awardsLabel: '荣誉奖励',
         footerNote: '基于 GitHub Pages 构建',
-        lastUpdated: '最后更新：2026 年 5 月',
+        lastUpdated: '最后更新：2026 年 6 月',
         statsRepos: '仓库',
         statsFollowers: '关注者',
         statsUpdated: '更新',
@@ -90,6 +90,22 @@ const i18n = {
 };
 
 const publicationDetails = [
+    {
+        match: 'AutoModelling: From BMS Operational Data',
+        journal: 'Energy',
+        year: '2026',
+        cover: 'static/assets/img/journals/energy.jpg',
+        en: {
+            highlight: 'Developed AutoModelling, a reproducible pipeline from BMS operational data to validated executable Modelica chiller models.',
+            abstract: 'Generating executable chiller models from raw Building Management System (BMS) data remains difficult in practice because operational datasets are heterogeneous, incomplete, noisy, and rarely organised for model identification. This study develops AutoModelling, a standardised and reproducible automated workflow that transforms raw BMS operational data into validated, executable Modelica chiller models at the device level within a single pipeline, integrating semantic point mapping, operational data preprocessing, moving-window steady-state screening, EIR-family model identification, rule-based Modelica file generation, automated simulation, and quantitative validation.',
+            citation: 'Jin, Z. and Wang, Z. AutoModelling: From BMS Operational Data to Validated Modelica Models for Chillers. Energy, 141700, 2026.'
+        },
+        zh: {
+            highlight: '提出 AutoModelling：从 BMS 运行数据到可验证 Modelica 冷机模型的自动化流程。',
+            abstract: 'Generating executable chiller models from raw Building Management System (BMS) data remains difficult in practice because operational datasets are heterogeneous, incomplete, noisy, and rarely organised for model identification. This study develops AutoModelling, a standardised and reproducible automated workflow that transforms raw BMS operational data into validated, executable Modelica chiller models at the device level within a single pipeline, integrating semantic point mapping, operational data preprocessing, moving-window steady-state screening, EIR-family model identification, rule-based Modelica file generation, automated simulation, and quantitative validation.',
+            citation: 'Jin, Z. and Wang, Z. AutoModelling: From BMS Operational Data to Validated Modelica Models for Chillers. Energy, 141700, 2026.'
+        }
+    },
     {
         match: 'Towards Climate-Responsive Atrium Design',
         journal: 'Under Review',
@@ -268,6 +284,37 @@ const publicationDetails = [
 ];
 
 const publicationRecords = [
+    {
+        match: 'AutoModelling: From BMS Operational Data',
+        title: 'AutoModelling: From BMS Operational Data to Validated Modelica Models for Chillers',
+        authors: 'Jin, Zhineng; Zhe Wang',
+        firstAffiliation: 'Department of Civil and Environmental Engineering, The Hong Kong University of Science and Technology, Hong Kong, China',
+        journal: 'Energy',
+        year: '2026',
+        cover: 'static/assets/img/journals/energy.jpg',
+        en: {
+            highlights: [
+                'Developed AutoModelling: a pipeline from BMS data to Modelica chiller models.',
+                'Six-step pipeline: semantic mapping, screening, fitting, simulation, validation.',
+                'Demonstrated on 22 chillers in three real Hong Kong cooling plants.',
+                '13 of 15 chillers (87%) meet ASHRAE GL14 on power across three real plants.',
+                'Cut manual modelling effort by 98.5%: 272.5 to 4.11 person-hours per site.'
+            ],
+            abstract: 'Generating executable chiller models from raw Building Management System (BMS) data remains difficult in practice because operational datasets are heterogeneous, incomplete, noisy, and rarely organised for model identification. This study develops AutoModelling, a standardised and reproducible automated workflow that transforms raw BMS operational data into validated, executable Modelica chiller models at the device level within a single pipeline, integrating semantic point mapping, operational data preprocessing, moving-window steady-state screening, EIR-family model identification, rule-based Modelica file generation, automated simulation, and quantitative validation. Rather than imposing one predefined structure, the workflow applies a candidate-model strategy that selects the better-supported variant per chiller from two Energy Input Ratio (EIR) family models in the Modelica Buildings Library--ElectricReformulatedEIR (EEIR) and ElectricEIR (EIR)--which differ in whether the condenser-side performance curves use the leaving or entering condenser-water temperature. The workflow is evaluated on three real cooling plants in Hong Kong, representing a data centre, a commercial complex, and a university campus. Among 22 chillers, 15 provide sufficient complete and steady-state data for identification; EEIR is selected for 11 units and EIR for 4 units. The selected models satisfy the adopted ASHRAE Guideline 14 thresholds for compressor power in 13 of the 15 retained chillers and for coefficient of performance in 10, with 9 chillers meeting both criteria simultaneously. A central finding is that modelling readiness is governed not by nominal sensor availability alone but by key-variable completeness, retained steady-state sample count, operating-range coverage, and measurement consistency: the cleanest site achieves compliant fits from informative data, whereas the others reveal how limited operating coverage or measurement anomalies degrade validation quality. Relative to a conservative manual baseline, the workflow reduces modelling effort by 98.5% for the most demanding site, while transparently reporting both compliant and non-compliant retained units.',
+            citation: 'Jin, Zhineng and Zhe Wang. "AutoModelling: From BMS Operational Data to Validated Modelica Models for Chillers." Energy (2026): 141700. https://doi.org/10.1016/j.energy.2026.141700.'
+        },
+        zh: {
+            highlights: [
+                '提出 AutoModelling：从 BMS 数据生成 Modelica 冷机模型的流程。',
+                '流程覆盖语义映射、数据筛选、参数拟合、仿真与验证。',
+                '在香港三个真实冷站的 22 台冷机上进行验证。',
+                '15 台保留冷机中有 13 台在功率指标上满足 ASHRAE GL14。',
+                '将单站人工建模工作量从 272.5 人时降至 4.11 人时，减少 98.5%。'
+            ],
+            abstract: 'Generating executable chiller models from raw Building Management System (BMS) data remains difficult in practice because operational datasets are heterogeneous, incomplete, noisy, and rarely organised for model identification. This study develops AutoModelling, a standardised and reproducible automated workflow that transforms raw BMS operational data into validated, executable Modelica chiller models at the device level within a single pipeline, integrating semantic point mapping, operational data preprocessing, moving-window steady-state screening, EIR-family model identification, rule-based Modelica file generation, automated simulation, and quantitative validation. Rather than imposing one predefined structure, the workflow applies a candidate-model strategy that selects the better-supported variant per chiller from two Energy Input Ratio (EIR) family models in the Modelica Buildings Library--ElectricReformulatedEIR (EEIR) and ElectricEIR (EIR)--which differ in whether the condenser-side performance curves use the leaving or entering condenser-water temperature. The workflow is evaluated on three real cooling plants in Hong Kong, representing a data centre, a commercial complex, and a university campus. Among 22 chillers, 15 provide sufficient complete and steady-state data for identification; EEIR is selected for 11 units and EIR for 4 units. The selected models satisfy the adopted ASHRAE Guideline 14 thresholds for compressor power in 13 of the 15 retained chillers and for coefficient of performance in 10, with 9 chillers meeting both criteria simultaneously. A central finding is that modelling readiness is governed not by nominal sensor availability alone but by key-variable completeness, retained steady-state sample count, operating-range coverage, and measurement consistency: the cleanest site achieves compliant fits from informative data, whereas the others reveal how limited operating coverage or measurement anomalies degrade validation quality. Relative to a conservative manual baseline, the workflow reduces modelling effort by 98.5% for the most demanding site, while transparently reporting both compliant and non-compliant retained units.',
+            citation: 'Jin, Zhineng and Zhe Wang. "AutoModelling: From BMS Operational Data to Validated Modelica Models for Chillers." Energy (2026): 141700. https://doi.org/10.1016/j.energy.2026.141700.'
+        }
+    },
     {
         match: 'Towards Climate-Responsive Atrium Design',
         title: 'Towards Climate-Responsive Atrium Design: A Parametric Multi-Climate Analysis Using Meta-Sample Modeling',
