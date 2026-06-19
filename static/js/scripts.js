@@ -18,6 +18,7 @@ const i18n = {
         navPublications: 'Publications',
         navNews: 'News',
         navAwards: 'Awards',
+        navCv: 'CV',
         heroKicker: 'Academic Portfolio',
         heroRole: 'PhD Student, Hong Kong University of Science and Technology',
         heroSummary: 'Researching energy and carbon modeling for buildings and cities, HVAC system intelligence, smart building design, and thermal comfort in large public buildings.',
@@ -57,6 +58,7 @@ const i18n = {
         navPublications: '论文',
         navNews: '动态',
         navAwards: '荣誉',
+        navCv: '简历',
         heroKicker: '学术主页',
         heroRole: '香港科技大学博士研究生',
         heroSummary: '研究建筑与城市能源碳建模、HVAC 系统智能化、智慧建筑设计以及大型公共建筑热舒适。',
@@ -284,6 +286,35 @@ const publicationDetails = [
 ];
 
 const publicationRecords = [
+    {
+        match: 'Steady-State Detection for Chiller Modelling',
+        title: 'Steady-State Detection for Chiller Modelling: A task-grounded benchmark using Modelica-based validation residuals',
+        authors: 'Jin, Zhineng; Si Wu; Zhe Wang',
+        firstAffiliation: 'Department of Civil and Environmental Engineering, The Hong Kong University of Science and Technology, Hong Kong, China',
+        journal: 'Building Simulation BAS 2026',
+        year: '2026',
+        cover: 'static/assets/img/conferences/bas2026-hkust-campus.png',
+        en: {
+            highlights: [
+                'Presented an oral conference paper at Building Simulation BAS 2026.',
+                'Benchmarked steady-state detection methods by downstream Modelica validation residuals.',
+                'Used real water-cooled chiller BMS data from May 2024 to April 2025.',
+                'Found regression-slope SSD with K-of-P voting delivered the lowest validation error.'
+            ],
+            abstract: 'This oral presentation develops a task-grounded benchmark for steady-state detection in chiller modelling. Instead of ranking detectors only by internal strictness, the study evaluates how each detector improves downstream Modelica validation residuals. The case study uses real Site A water-cooled chiller BMS data and shows that the optimal detector is the one that best rejects slow drift while retaining useful modelling samples.',
+            citation: 'Jin, Zhineng, Si Wu, and Zhe Wang. "Steady-State Detection for Chiller Modelling: A task-grounded benchmark using Modelica-based validation residuals." Oral presentation, Building Simulation BAS 2026, Hong Kong SAR, China, June 11-13, 2026.'
+        },
+        zh: {
+            highlights: [
+                '在 Building Simulation BAS 2026 会议作口头报告。',
+                '以 Modelica 下游验证残差作为稳态检测方法的任务导向评价指标。',
+                '使用 2024 年 5 月至 2025 年 4 月真实水冷冷机 BMS 数据。',
+                '结果显示回归斜率 SSD 结合 K-of-P 投票可取得最低验证误差。'
+            ],
+            abstract: '该口头报告提出面向冷机建模任务的稳态检测基准，不仅根据检测器自身严格程度排序，而是评估不同稳态检测方法对下游 Modelica 验证残差的改善。案例使用真实 Site A 水冷冷机 BMS 数据，结果表明最优检测器应能有效排除慢漂移，同时保留足够有用的建模样本。',
+            citation: 'Jin, Zhineng, Si Wu, and Zhe Wang. "Steady-State Detection for Chiller Modelling: A task-grounded benchmark using Modelica-based validation residuals." Oral presentation, Building Simulation BAS 2026, Hong Kong SAR, China, June 11-13, 2026.'
+        }
+    },
     {
         match: 'AutoModelling: From BMS Operational Data',
         title: 'AutoModelling: From BMS Operational Data to Validated Modelica Models for Chillers',
@@ -682,8 +713,9 @@ function applyStaticTranslations() {
     setTextById('nav-publications', copy.navPublications);
     setTextById('nav-news', copy.navNews);
     setTextById('nav-awards', copy.navAwards);
+    setTextById('nav-cv', copy.navCv);
     setTextById('language-gateway-copy', copy.languageGatewayCopy);
-    setTextById('publications-heading', getLang() === 'zh' ? '期刊论文' : 'Journal Papers');
+    setTextById('publications-heading', getLang() === 'zh' ? '论文发表' : 'Publications');
 
     document.querySelectorAll('.lang-toggle').forEach((button) => {
         button.classList.toggle('is-active', button.dataset.setLang === lang);
@@ -789,7 +821,7 @@ function enhancePublications(section) {
         const meta = getPublicationMeta(originalText);
         const strongs = Array.from(item.querySelectorAll('strong')).map((node) => cleanText(node.textContent));
         const journal = meta ? meta.journal : strongs[stringsLastIndex(strongs)] || 'Publication';
-        const yearMatch = originalText.match(/\b(2025|2024|2023|2022)\b/);
+        const yearMatch = originalText.match(/\b(2026|2025|2024|2023|2022)\b/);
         const year = meta ? meta.year : (yearMatch ? yearMatch[1] : 'Paper');
         const title = meta ? meta.title : originalText.replace(/^.*?"([^"]+)".*$/, '$1');
         const paperLink = item.querySelector('a[href]')?.outerHTML || '';
@@ -797,6 +829,11 @@ function enhancePublications(section) {
         const coverContent = meta && meta.cover
             ? `<img src="${meta.cover}" alt="${journal} cover" />`
             : `<span>${journalInitials}</span><strong>${year}</strong>`;
+        const coverClasses = [
+            'publication-cover',
+            meta && meta.cover ? 'publication-cover--image' : '',
+            meta && meta.cover && meta.cover.includes('/conferences/') ? 'publication-cover--landscape' : ''
+        ].filter(Boolean).join(' ');
 
         item.classList.add('publication-card');
         item.innerHTML = `
@@ -806,7 +843,7 @@ function enhancePublications(section) {
                     <h3>${title}</h3>
                     <div class="publication-original">${paperLink}</div>
                 </div>
-                <div class="publication-cover${meta && meta.cover ? ' publication-cover--image' : ''}">
+                <div class="${coverClasses}">
                     ${coverContent}
                 </div>
             </div>

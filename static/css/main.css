@@ -120,6 +120,7 @@ a:hover {
 
 .navbar-nav {
     gap: 0.35rem;
+    align-items: center;
 }
 
 .language-switcher {
@@ -150,16 +151,26 @@ a:hover {
 }
 
 .nav-link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 34px;
+    padding: 0.35rem 0.72rem !important;
+    border: 1px solid rgba(23, 33, 31, 0.16);
+    border-radius: 6px;
+    background: rgba(255, 250, 241, 0.62);
     color: var(--muted);
     font-size: 0.82rem;
     font-weight: 750;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
+    letter-spacing: 0;
+    text-transform: none;
+    transition: background 160ms ease, border-color 160ms ease, color 160ms ease;
 }
 
 .nav-link:hover,
 .nav-link.active {
-    color: var(--forest);
+    background: var(--forest);
+    border-color: var(--forest);
+    color: #fffaf1;
 }
 
 .hero-section {
@@ -508,6 +519,14 @@ a:hover {
     margin-top: 0;
 }
 
+.main-body h5 {
+    margin: 1.5rem 0 0.65rem;
+    color: rgba(23, 33, 31, 0.72);
+    font-size: 0.86rem;
+    font-weight: 750;
+    letter-spacing: 0;
+}
+
 .main-body p {
     margin: 0 0 1rem;
 }
@@ -792,6 +811,16 @@ a:hover {
     display: block;
     object-fit: contain;
     background: #ffffff;
+}
+
+.publication-cover--landscape {
+    width: 156px;
+    min-height: 112px;
+}
+
+.publication-cover--landscape img {
+    height: 112px;
+    object-fit: cover;
 }
 
 .publication-cover span {
@@ -1462,6 +1491,16 @@ a:hover {
     object-fit: contain;
 }
 
+.publication-cover--landscape {
+    width: 156px;
+    min-height: 112px;
+}
+
+.publication-cover--landscape img {
+    height: 112px;
+    object-fit: cover;
+}
+
 .publication-cover span {
     color: var(--forest);
     font-family: var(--display-font);
@@ -1609,6 +1648,15 @@ a:hover {
     .publication-cover img {
         height: 94px;
         max-height: none;
+    }
+
+    .publication-cover--landscape {
+        width: 92px;
+        min-height: 70px;
+    }
+
+    .publication-cover--landscape img {
+        height: 70px;
     }
 
     .publication-panel summary {

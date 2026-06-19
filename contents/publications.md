@@ -1,8 +1,10 @@
-#### Submitted
+#### Journal Papers
+
+##### Submitted
 
 - <strong>Jin, Zhineng</strong>, Hongli Sun*, Junkang Song, Wenke Zhong, Zishuang Xia, Hanjie Zheng, Changqi Wen, Bin Xu and Borong Lin. "Towards Climate-Responsive Atrium Design: A Parametric Multi-Climate Analysis Using Meta-Sample Modeling." <strong>Under Review</strong>
 
-#### Published
+##### Published
 - <strong>Jin, Zhineng</strong> and Zhe Wang. "AutoModelling: From BMS Operational Data to Validated Modelica Models for Chillers." <strong>Energy</strong> (2026): 141700. [[Paper]](https://doi.org/10.1016/j.energy.2026.141700)
 
 - <strong>Jin, Zhineng</strong>, Hongli Sun*, Junkang Song, Yanhong Zheng, Hanjie Zheng, Menglong Zhang, and Borong Lin. "Novel integrated meta-sampling approach for smart building design: real-time data analytics and energy performance optimization practice." <strong>Energy</strong>(2025): 137501.[[Paper]](https://doi.org/10.1016/j.energy.2025.137501)
@@ -24,3 +26,7 @@
 - Xingyu Qi, Yin Zhang, and <strong>Jin, Zhineng</strong>. "Building Energy Efficiency for Indoor Heating Temperature Set-Point: Mechanism and Case Study of Mid-Rise Apartment." <strong>Buildings</strong> 13, no. 5 (2023): 1189.[[Paper]](https://doi.org/10.3390/buildings13051189)
 
 - Yanhong Zheng, Pengfei Si, Yin Zhang, Lijun Shi, Changjiajin Huang, Dongsheng Huang, and <strong>Jin, Zhineng</strong>. "Study on the Effect of Radiant Insulation Panel in Cavity on the Thermal Performance of Broken-Bridge Aluminum Window Frame." <strong>Buildings</strong> 13, no. 1 (2022): 58.[[Paper]](https://doi.org/10.3390/buildings13010058)
+
+#### Conference Papers
+
+- <strong>Jin, Zhineng</strong>, Si Wu, and Zhe Wang*. "Steady-State Detection for Chiller Modelling: A task-grounded benchmark using Modelica-based validation residuals." <strong>Building Simulation BAS 2026</strong>, Hong Kong SAR, China, June 11-13, 2026. <strong>Oral Presentation</strong> [[Conference]](https://bas2026.org/)
