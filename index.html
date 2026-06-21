@@ -3,33 +3,25 @@
 
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="Zhineng Jin is a PhD student at HKUST researching building and urban energy-carbon modeling, HVAC intelligence, and thermal comfort." />
     <meta name="author" content="Zhineng Jin" />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://kiaarryy.github.io/" />
-
     <meta property="og:type" content="profile" />
     <meta property="og:title" content="Zhineng Jin | Academic Homepage" />
-    <meta property="og:description" content="Academic homepage for Zhineng Jin: building energy, HVAC intelligence, smart building design, and thermal comfort research." />
+    <meta property="og:description" content="Academic homepage for building energy, HVAC intelligence, smart building design, and thermal comfort research." />
     <meta property="og:url" content="https://kiaarryy.github.io/" />
     <meta property="og:image" content="https://kiaarryy.github.io/screenshot_full.png" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Zhineng Jin | Academic Homepage" />
-    <meta name="twitter:description" content="Academic homepage for Zhineng Jin: building energy, HVAC intelligence, smart building design, and thermal comfort research." />
-    <meta name="twitter:image" content="https://kiaarryy.github.io/screenshot_full.png" />
-
-    <title id="title">Zhineng Jin's Homepage</title>
-
-    <link rel="icon" type="image/x-icon" href="static/assets/favicon.ico" />
+    <title id="title">Zhineng Jin | Academic Homepage</title>
+    <link rel="icon" type="image/x-icon" href="/static/assets/favicon.ico" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,650;9..144,760&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@500;700&display=swap" rel="stylesheet" />
-
-    <link type="text/css" href="static/css/styles.css" rel="stylesheet" />
-    <link type="text/css" href="static/css/main.css" rel="stylesheet" />
-
+    <link href="/static/css/styles.css" rel="stylesheet" />
+    <link href="/static/css/main.css" rel="stylesheet" />
     <script type="application/ld+json">
         {
             "@context": "https://schema.org",
@@ -44,83 +36,49 @@
                 "@type": "CollegeOrUniversity",
                 "name": "Hong Kong University of Science and Technology"
             },
-            "alumniOf": {
-                "@type": "CollegeOrUniversity",
-                "name": "Sichuan University"
-            },
             "sameAs": [
                 "https://orcid.org/0000-0001-6893-8319",
                 "https://www.researchgate.net/profile/Zhineng-Jin",
                 "https://scholar.google.com/citations?hl=en&user=JXqatWAAAAAJ",
                 "https://github.com/kiaarryy"
-            ],
-            "knowsAbout": [
-                "Building energy modeling",
-                "HVAC systems",
-                "Thermal comfort",
-                "Smart building design",
-                "Fault detection and diagnosis"
             ]
         }
     </script>
-
-    <script type="text/javascript" src="static/js/bootstrap.bundle.min.js"></script>
-    <script type="text/javascript" src="static/js/marked.min.js"></script>
-    <script>
-        window.MathJax = {
-            tex: {
-                inlineMath: [['$', '$'], ['\\(', '\\)']],
-                displayMath: [['$$', '$$'], ['\\[', '\\]']],
-                processEscapes: false,
-                processEnvironments: true,
-                processRefs: true,
-                tags: 'all'
-            }
-        };
-    </script>
-    <script type="text/javascript" src="static/js/js-yaml.min.js"></script>
-    <script type="text/javascript" src="static/js/scripts.js"></script>
-    <script type="module" src="static/js/ferrofluid-background.js"></script>
+    <script src="/static/js/bootstrap.bundle.min.js" defer></script>
+    <script src="/static/js/marked.min.js" defer></script>
+    <script src="/static/js/js-yaml.min.js" defer></script>
+    <script src="/static/js/scripts.js" defer></script>
+    <script src="/static/js/coding-activity.js" defer></script>
+    <script type="module" src="/static/js/ferrofluid-background.js"></script>
 </head>
 
-<body id="page-top">
+<body id="page-top" data-page="home">
     <div class="site-ferrofluid-bg" data-ferrofluid-background aria-hidden="true"></div>
-
-    <div class="language-gateway" id="language-gateway" aria-label="Choose site language">
+    <div class="language-gateway is-hidden" id="language-gateway" aria-label="Choose site language">
         <div class="language-gateway__backdrop"></div>
         <div class="language-gateway__panel spotlight-card">
             <p class="eyebrow">Zhineng Jin | 金治能</p>
             <h1>Zhineng Jin's Personal Website</h1>
             <p id="language-gateway-copy">Academic homepage for building energy, HVAC intelligence, smart building design, and thermal comfort research.</p>
             <div class="language-gateway__actions" role="group" aria-label="Language options">
-                <button class="language-choice" type="button" data-set-lang="en">
-                    <span>English</span>
-                    <i class="bi-arrow-right"></i>
-                </button>
-                <button class="language-choice" type="button" data-set-lang="zh">
-                    <span>中文主页</span>
-                    <i class="bi-arrow-right"></i>
-                </button>
+                <button class="language-choice" type="button" data-set-lang="en"><span>English</span><i class="bi-arrow-right"></i></button>
+                <button class="language-choice" type="button" data-set-lang="zh"><span>中文主页</span><i class="bi-arrow-right"></i></button>
             </div>
         </div>
     </div>
 
-    <nav class="header navbar navbar-expand-lg fixed-top" id="mainNav">
+    <nav class="header navbar navbar-expand-lg fixed-top" id="mainNav" aria-label="Primary navigation">
         <div class="container px-4 px-lg-5">
-            <a id="page-top-title" class="navbar-brand" href="#page-top">Zhineng Jin</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
-                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                <i class="bi-list"></i>
-            </button>
+            <a id="page-top-title" class="navbar-brand" href="/">Zhineng Jin</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><i class="bi-list"></i></button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a id="nav-profile" class="nav-link" href="#home">Profile</a></li>
-                    <li class="nav-item"><a id="nav-github" class="nav-link" href="#github">GitHub</a></li>
-                    <li class="nav-item"><a id="nav-research" class="nav-link" href="#research">Research</a></li>
-                    <li class="nav-item"><a id="nav-publications" class="nav-link" href="#publications">Publications</a></li>
-                    <li class="nav-item"><a id="nav-news" class="nav-link" href="#news">News</a></li>
-                    <li class="nav-item"><a id="nav-awards" class="nav-link" href="#awards">Awards</a></li>
-                    <li class="nav-item"><a id="nav-cv" class="nav-link" href="static/assets/Zhineng_Jin_CV.pdf">CV</a></li>
+                    <li class="nav-item"><a id="nav-home" class="nav-link" href="/" aria-current="page">Home</a></li>
+                    <li class="nav-item"><a id="nav-research" class="nav-link" href="/research/">Research</a></li>
+                    <li class="nav-item"><a id="nav-publications" class="nav-link" href="/publications/">Publications</a></li>
+                    <li class="nav-item"><a id="nav-news" class="nav-link" href="/news/">News</a></li>
+                    <li class="nav-item"><a id="nav-awards" class="nav-link" href="/awards/">Awards</a></li>
+                    <li class="nav-item"><a id="nav-cv" class="nav-link" href="/static/assets/Zhineng_Jin_CV.pdf">CV</a></li>
                 </ul>
                 <div class="language-switcher" aria-label="Switch language">
                     <button class="lang-toggle is-active" type="button" data-set-lang="en">EN</button>
@@ -139,9 +97,9 @@
                     <p id="hero-role" class="hero-role">PhD Student, Hong Kong University of Science and Technology</p>
                     <p id="hero-summary" class="hero-summary">Researching energy and carbon modeling for buildings and cities, HVAC system intelligence, smart building design, and thermal comfort in large public buildings.</p>
                     <div class="hero-actions">
-                        <a class="button-primary" href="#publications"><span id="hero-primary-link">Publications</span><i class="bi-arrow-right"></i></a>
-                        <a class="button-secondary" href="#home"><span id="hero-secondary-link">Contact</span></a>
-                        <a id="cv-link" class="button-secondary" href="static/assets/Zhineng_Jin_CV.pdf"><span>CV</span><i class="bi-download"></i></a>
+                        <a class="button-primary" href="/publications/"><span id="hero-primary-link">Publications</span><i class="bi-arrow-right"></i></a>
+                        <a class="button-secondary" href="mailto:zjinbe@connect.ust.hk"><span id="hero-secondary-link">Contact</span></a>
+                        <a id="cv-link" class="button-secondary" href="/static/assets/Zhineng_Jin_CV.pdf"><span>CV</span><i class="bi-download"></i></a>
                     </div>
                     <div class="academic-links" aria-label="Academic profiles">
                         <a id="orcid-link" href="https://orcid.org/0000-0001-6893-8319"><i class="bi-link-45deg"></i> ORCID</a>
@@ -151,7 +109,7 @@
                     </div>
                 </div>
                 <aside class="profile-panel" aria-label="Research profile summary">
-                    <img class="profile-photo" src="static/assets/img/photo.png" alt="Portrait of Zhineng Jin" />
+                    <img class="profile-photo" src="/static/assets/img/photo.png" alt="Portrait of Zhineng Jin" />
                     <div class="profile-meta">
                         <span>ORCID 0000-0001-6893-8319</span>
                         <strong>Buildings, energy, HVAC, and thermal comfort</strong>
@@ -163,7 +121,7 @@
     </header>
 
     <main>
-        <section class="content-section profile-section" id="home">
+        <section class="content-section profile-section" id="profile">
             <div class="container px-4 px-lg-5">
                 <div class="section-shell">
                     <div class="section-heading">
@@ -175,111 +133,47 @@
             </div>
         </section>
 
-        <section class="content-section github-section" id="github">
+        <section class="content-section coding-section" data-coding-activity>
             <div class="container px-4 px-lg-5">
-                <div class="section-shell">
-                    <div class="section-heading">
-                        <span id="github-label" class="section-label">Live GitHub Activity</span>
-                        <h2><i class="bi-github"></i> GitHub</h2>
+                <div class="coding-heading">
+                    <div>
+                        <span id="coding-label" class="section-label">Live GitHub Activity</span>
+                        <h2 id="coding-heading">Small proofs, stacked every day.</h2>
                     </div>
-                    <div class="github-body">
-                        <div class="github-overview spotlight-card">
-                            <div>
-                                <p id="github-kicker" class="github-kicker">Synchronized from GitHub public data</p>
-                                <h3 id="github-title">Open-source work and recent repository activity</h3>
-                            </div>
-                            <a id="github-profile-cta" class="github-profile-cta" href="https://github.com/kiaarryy" target="_blank" rel="noopener noreferrer">
-                                <span>View GitHub</span>
-                                <i class="bi-box-arrow-up-right"></i>
-                            </a>
+                    <div class="coding-summary"><strong data-coding-days>--</strong><span id="coding-days-label">coding days</span></div>
+                </div>
+                <article class="coding-card spotlight-card">
+                    <div class="coding-card__head">
+                        <div>
+                            <h3 id="coding-title">Coding</h3>
+                            <p data-coding-source aria-live="polite">Loading GitHub contributions</p>
                         </div>
-                        <div class="github-stats" id="github-stats" aria-live="polite">
-                            <div class="github-stat"><span>Repos</span><strong>--</strong></div>
-                            <div class="github-stat"><span>Followers</span><strong>--</strong></div>
-                            <div class="github-stat"><span>Updated</span><strong>--</strong></div>
-                        </div>
-                        <div class="github-heatmap spotlight-card">
-                            <div class="github-heatmap__header">
-                                <span id="github-heatmap-label">Contribution Calendar</span>
-                                <span id="github-live-badge">Live</span>
-                            </div>
-                            <img id="github-contribution-chart"
-                                src="https://ghchart.rshah.org/007f7a/kiaarryy"
-                                data-chart-base="https://ghchart.rshah.org/007f7a/kiaarryy"
-                                alt="GitHub contribution chart for kiaarryy"
-                                loading="eager"
-                                decoding="async"
-                                referrerpolicy="no-referrer" />
-                        </div>
-                        <div class="repo-list" id="repo-list" aria-live="polite"></div>
+                        <label class="coding-year">
+                            <span id="coding-year-label">Year</span>
+                            <select data-coding-year aria-label="Contribution year">
+                                <option value="2025">2025</option>
+                                <option value="2026" selected>2026</option>
+                            </select>
+                        </label>
                     </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="content-section research-section" id="research">
-            <div class="container px-4 px-lg-5">
-                <div class="section-shell">
-                    <div class="section-heading">
-                        <span id="research-label" class="section-label">Research Highlights</span>
-                        <h2><i class="bi-lightning-charge"></i> Research</h2>
+                    <div class="coding-grid-shell">
+                        <div class="coding-months" data-coding-months></div>
+                        <div class="coding-grid" data-coding-grid aria-label="GitHub contribution calendar"></div>
                     </div>
-                    <div class="main-body research-body" id="research-md"></div>
-                </div>
-            </div>
-        </section>
-
-        <section class="content-section publication-section" id="publications">
-            <div class="container px-4 px-lg-5">
-                <div class="section-shell">
-                    <div class="section-heading">
-                        <span id="publications-label" class="section-label">Selected Publications</span>
-                        <h2><i class="bi-file-text"></i> <span id="publications-heading">Journal Papers</span></h2>
+                    <div class="coding-legend" aria-label="Contribution intensity">
+                        <span id="coding-less-label">Less</span>
+                        <i class="coding-cell coding-level-0"></i><i class="coding-cell coding-level-1"></i><i class="coding-cell coding-level-2"></i><i class="coding-cell coding-level-3"></i><i class="coding-cell coding-level-4"></i>
+                        <span id="coding-more-label">More</span>
                     </div>
-                    <div class="main-body" id="publications-md"></div>
-                </div>
-            </div>
-        </section>
-
-        <section class="content-section news-section" id="news">
-            <div class="container px-4 px-lg-5">
-                <div class="section-shell">
-                    <div class="section-heading">
-                        <span id="news-label" class="section-label">News & Updates</span>
-                        <h2><i class="bi-megaphone"></i> News</h2>
-                    </div>
-                    <div class="main-body" id="news-md"></div>
-                </div>
-            </div>
-        </section>
-
-        <section class="content-section awards-section" id="awards">
-            <div class="container px-4 px-lg-5">
-                <div class="section-shell">
-                    <div class="section-heading">
-                        <span id="awards-label" class="section-label">Honors & Awards</span>
-                        <h2><i class="bi-award"></i> Awards</h2>
-                    </div>
-                    <div class="main-body" id="awards-md"></div>
-                </div>
+                </article>
             </div>
         </section>
     </main>
 
     <footer class="site-footer">
-        <div class="container px-4 px-lg-5">
-            <div class="footer-grid">
-                <div>
-                    <strong id="footer-note">Built on GitHub Pages</strong>
-                    <div id="copyright-text" class="copyright">&copy; Zhineng Jin 2023-2026. All Rights Reserved.</div>
-                    <div id="last-updated" class="copyright">Last updated: May 2026</div>
-                </div>
-                <div class="footer-links">
-                    <a id="email-link" href="mailto:zjinbe@connect.ust.hk">Email</a>
-                    <a href="#publications">Publications</a>
-                    <a href="#page-top">Top</a>
-                </div>
-            </div>
+        <div class="container px-4 px-lg-5 footer-grid">
+            <div><strong id="footer-note">Built on GitHub Pages</strong><div id="copyright-text" class="copyright">&copy; Zhineng Jin 2023-2026. All Rights Reserved.</div><div id="last-updated" class="copyright">Last updated: June 2026</div></div>
+            <div class="footer-links"><a id="email-link" href="mailto:zjinbe@connect.ust.hk">Email</a><a href="https://github.com/kiaarryy">GitHub</a></div>
         </div>
     </footer>
 </body>
