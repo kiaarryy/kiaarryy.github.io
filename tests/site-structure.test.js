@@ -42,3 +42,12 @@ test('homepage contains Coding and no interior long-scroll sections', () => {
     assert.doesNotMatch(html, /id="news"/);
     assert.doesNotMatch(html, /id="awards"/);
 });
+
+test('shared script is route-aware and uses root-relative content paths', () => {
+    const script = fs.readFileSync('static/js/scripts.js', 'utf8');
+    assert.match(script, /const contentDir = '\/contents\/'/);
+    assert.match(script, /const pageSectionMap =/);
+    assert.match(script, /async function loadPageMarkdown\(\)/);
+    assert.match(script, /new CustomEvent\('site-language-change'/);
+    assert.doesNotMatch(script, /await loadAllMarkdown\(\)/);
+});

@@ -1,17 +1,35 @@
-const contentDir = 'contents/';
+const contentDir = '/contents/';
 const configFile = 'config.yml';
-const sectionNames = ['home', 'research', 'publications', 'news', 'awards'];
+const pageSectionMap = {
+    home: ['home'],
+    research: ['research'],
+    publications: ['publications'],
+    news: ['news'],
+    awards: ['awards']
+};
+const currentPage = document.body?.dataset.page || 'home';
 const githubUser = 'kiaarryy';
 const requestedLang = new URLSearchParams(window.location.search).get('lang');
 const contributionRefreshMs = 5 * 60 * 1000;
 
-let currentLang = requestedLang || localStorage.getItem('site-language') || '';
+const storedLang = localStorage.getItem('site-language');
+let currentLang = ['en', 'zh'].includes(requestedLang)
+    ? requestedLang
+    : ['en', 'zh'].includes(storedLang) ? storedLang : '';
 let contributionRefreshTimer = null;
 
 const i18n = {
     en: {
         title: "Zhineng Jin's Homepage",
+        pageTitles: {
+            home: 'Zhineng Jin | Academic Homepage',
+            research: 'Research | Zhineng Jin',
+            publications: 'Publications | Zhineng Jin',
+            news: 'News | Zhineng Jin',
+            awards: 'Awards | Zhineng Jin'
+        },
         languageGatewayCopy: 'Academic homepage for building energy, HVAC intelligence, smart building design, and thermal comfort research.',
+        navHome: 'Home',
         navProfile: 'Profile',
         navGithub: 'GitHub',
         navResearch: 'Research',
@@ -26,6 +44,13 @@ const i18n = {
         heroSecondaryLink: 'Contact',
         topSectionBgText: 'Climate-responsive buildings, HVAC intelligence, and urban energy modeling',
         profileLabel: 'Profile',
+        codingLabel: 'Live GitHub Activity',
+        codingHeading: 'Small proofs, stacked every day.',
+        codingDaysLabel: 'coding days',
+        codingTitle: 'Coding',
+        codingYearLabel: 'Year',
+        codingLessLabel: 'Less',
+        codingMoreLabel: 'More',
         githubLabel: 'Live GitHub Activity',
         githubKicker: 'Synchronized from GitHub public data',
         githubTitle: 'Open-source work and recent repository activity',
@@ -33,9 +58,17 @@ const i18n = {
         githubHeatmapLabel: 'Contribution Calendar',
         githubLiveBadge: 'Live',
         researchLabel: 'Research Highlights',
+        researchHeading: 'Research',
+        researchIntro: 'Building physics, operational intelligence, and reproducible modelling for low-carbon built environments.',
         publicationsLabel: 'Selected Publications',
+        publicationsHeading: 'Publications',
+        publicationsIntro: 'Peer-reviewed journal articles and conference presentations.',
         newsLabel: 'News & Updates',
+        newsHeading: 'News',
+        newsIntro: 'Publications, presentations, collaborations, and academic milestones.',
         awardsLabel: 'Honors & Awards',
+        awardsHeading: 'Awards',
+        awardsIntro: 'Honors recognizing research, academic performance, and professional development.',
         footerNote: 'Built on GitHub Pages',
         lastUpdated: 'Last updated: June 2026',
         statsRepos: 'Repos',
@@ -51,7 +84,15 @@ const i18n = {
     },
     zh: {
         title: '金治能的个人主页',
+        pageTitles: {
+            home: '金治能 | 个人学术主页',
+            research: '研究方向 | 金治能',
+            publications: '论文发表 | 金治能',
+            news: '最新动态 | 金治能',
+            awards: '荣誉奖励 | 金治能'
+        },
         languageGatewayCopy: '建筑能源、HVAC 智能化、智慧建筑设计与热舒适方向的学术主页。',
+        navHome: '主页',
         navProfile: '简介',
         navGithub: 'GitHub',
         navResearch: '研究',
@@ -66,6 +107,13 @@ const i18n = {
         heroSecondaryLink: '联系方式',
         topSectionBgText: '气候响应型建筑、HVAC 智能化与城市能源建模',
         profileLabel: '个人简介',
+        codingLabel: 'GitHub 实时动态',
+        codingHeading: '日积跬步，持续构建。',
+        codingDaysLabel: '个编程日',
+        codingTitle: '编程活动',
+        codingYearLabel: '年份',
+        codingLessLabel: '较少',
+        codingMoreLabel: '较多',
         githubLabel: 'GitHub 实时动态',
         githubKicker: '同步自 GitHub 公开数据',
         githubTitle: '开源工作与近期仓库更新',
@@ -73,9 +121,17 @@ const i18n = {
         githubHeatmapLabel: '贡献热力图',
         githubLiveBadge: '实时',
         researchLabel: '研究方向',
+        researchHeading: '研究',
+        researchIntro: '面向低碳建成环境的建筑物理、运行智能与可复现建模研究。',
         publicationsLabel: '代表论文',
+        publicationsHeading: '论文发表',
+        publicationsIntro: '同行评审期刊论文与学术会议报告。',
         newsLabel: '最新动态',
+        newsHeading: '动态',
+        newsIntro: '论文发表、学术报告、科研合作与阶段进展。',
         awardsLabel: '荣誉奖励',
+        awardsHeading: '荣誉',
+        awardsIntro: '科研、学业表现与专业发展相关荣誉。',
         footerNote: '基于 GitHub Pages 构建',
         lastUpdated: '最后更新：2026 年 6 月',
         statsRepos: '仓库',
@@ -678,7 +734,8 @@ function toIdKey(id) {
 function setConfigValue(key, value) {
     if (key.endsWith('-href')) {
         const target = document.getElementById(key.replace(/-href$/, ''));
-        if (target) target.setAttribute('href', value);
+        const href = typeof value === 'string' && value.startsWith('static/') ? `/${value}` : value;
+        if (target) target.setAttribute('href', href);
         return;
     }
 
@@ -698,7 +755,6 @@ function applyStaticTranslations() {
     const lang = getLang();
     const copy = i18n[lang];
     document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
-    document.title = copy.title;
 
     Object.keys(copy).forEach((key) => {
         if (typeof copy[key] === 'string') {
@@ -707,15 +763,14 @@ function applyStaticTranslations() {
         }
     });
 
-    setTextById('nav-profile', copy.navProfile);
-    setTextById('nav-github', copy.navGithub);
+    setTextById('nav-home', copy.navHome);
     setTextById('nav-research', copy.navResearch);
     setTextById('nav-publications', copy.navPublications);
     setTextById('nav-news', copy.navNews);
     setTextById('nav-awards', copy.navAwards);
     setTextById('nav-cv', copy.navCv);
     setTextById('language-gateway-copy', copy.languageGatewayCopy);
-    setTextById('publications-heading', getLang() === 'zh' ? '论文发表' : 'Publications');
+    document.title = copy.pageTitles[currentPage] || copy.title;
 
     document.querySelectorAll('.lang-toggle').forEach((button) => {
         button.classList.toggle('is-active', button.dataset.setLang === lang);
@@ -826,8 +881,11 @@ function enhancePublications(section) {
         const title = meta ? meta.title : originalText.replace(/^.*?"([^"]+)".*$/, '$1');
         const paperLink = item.querySelector('a[href]')?.outerHTML || '';
         const journalInitials = journal.split(/\s+/).slice(0, 3).map((word) => word[0]).join('');
-        const coverContent = meta && meta.cover
-            ? `<img src="${meta.cover}" alt="${journal} cover" />`
+        const coverSrc = meta && meta.cover
+            ? (meta.cover.startsWith('/') ? meta.cover : `/${meta.cover}`)
+            : '';
+        const coverContent = coverSrc
+            ? `<img src="${coverSrc}" alt="${journal} cover" />`
             : `<span>${journalInitials}</span><strong>${year}</strong>`;
         const coverClasses = [
             'publication-cover',
@@ -921,8 +979,10 @@ async function fetchMarkdown(name) {
 }
 
 async function loadMarkdown(name) {
-    const markdown = await fetchMarkdown(name);
     const target = document.getElementById(`${name}-md`);
+    if (!target) return;
+
+    const markdown = await fetchMarkdown(name);
     target.innerHTML = marked.parse(markdown);
     decorateMarkdownSection(name);
     setupSpotlightCards(target);
@@ -930,8 +990,18 @@ async function loadMarkdown(name) {
     await typesetMath(markdown);
 }
 
-async function loadAllMarkdown() {
-    await Promise.all(sectionNames.map((name) => loadMarkdown(name).catch((error) => console.log(error))));
+async function loadPageMarkdown() {
+    const names = pageSectionMap[currentPage] || [];
+    await Promise.all(names.map(async (name) => {
+        try {
+            await loadMarkdown(name);
+        } catch (error) {
+            const target = document.getElementById(`${name}-md`);
+            if (target) {
+                target.innerHTML = `<p class="content-error">${getLang() === 'zh' ? '内容暂时无法加载，请稍后重试。' : 'This content could not be loaded. Please try again later.'}</p>`;
+            }
+        }
+    }));
 }
 
 function formatDate(value) {
@@ -1077,8 +1147,8 @@ async function setLanguage(lang) {
     localStorage.setItem('site-language', currentLang);
     document.getElementById('language-gateway')?.classList.add('is-hidden');
     applyStaticTranslations();
-    await loadAllMarkdown();
-    await loadGithubActivity();
+    await loadPageMarkdown();
+    window.dispatchEvent(new CustomEvent('site-language-change', { detail: { lang: currentLang } }));
 }
 
 function setupLanguageControls() {
@@ -1095,14 +1165,6 @@ function setupLanguageControls() {
 }
 
 window.addEventListener('DOMContentLoaded', async () => {
-    const mainNav = document.body.querySelector('#mainNav');
-    if (mainNav) {
-        new bootstrap.ScrollSpy(document.body, {
-            target: '#mainNav',
-            offset: 90,
-        });
-    }
-
     const navbarToggler = document.body.querySelector('.navbar-toggler');
     const responsiveNavItems = Array.from(document.querySelectorAll('#navbarResponsive .nav-link'));
     responsiveNavItems.forEach((responsiveNavItem) => {
@@ -1117,8 +1179,7 @@ window.addEventListener('DOMContentLoaded', async () => {
     setupLanguageControls();
     await loadConfig().catch((error) => console.log(error));
     applyStaticTranslations();
-    await loadAllMarkdown();
-    await loadGithubActivity();
+    await loadPageMarkdown();
     setupSpotlightCards(document);
     setupReveals(document);
 });
