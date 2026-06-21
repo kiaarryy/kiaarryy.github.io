@@ -15,11 +15,11 @@ publications-label: Selected Publications
 news-label: News & Updates
 awards-label: Honors & Awards
 footer-note: Built on GitHub Pages
-last-updated: Last updated: June 2026
+last-updated: 'Last updated: June 2026'
 copyright-text: '&copy; Zhineng Jin 2023-2026. All Rights Reserved.'
 orcid-link-href: https://orcid.org/0000-0001-6893-8319
 researchgate-link-href: https://www.researchgate.net/profile/Zhineng-Jin
 scholar-link-href: https://scholar.google.com/citations?hl=en&user=JXqatWAAAAAJ
 github-link-href: https://github.com/kiaarryy
-cv-link-href: static/assets/Zhineng_Jin_CV.pdf
+cv-link-href: /static/assets/Zhineng_Jin_CV.pdf
 email-link-href: mailto:zjinbe@connect.ust.hk

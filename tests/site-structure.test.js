@@ -50,4 +50,22 @@ test('shared script is route-aware and uses root-relative content paths', () => 
     assert.match(script, /async function loadPageMarkdown\(\)/);
     assert.match(script, /new CustomEvent\('site-language-change'/);
     assert.doesNotMatch(script, /await loadAllMarkdown\(\)/);
+    assert.match(script, /localStorage\.setItem\('site-language', requestedLang\)/);
+});
+
+test('shared styles define fixed active navigation and accessible Coding motion', () => {
+    const css = fs.readFileSync('static/css/main.css', 'utf8');
+    assert.match(css, /\.nav-link\[aria-current="page"\]/);
+    assert.match(css, /\.coding-grid\s*\{/);
+    assert.match(css, /@keyframes coding-sparkle/);
+    assert.match(css, /@media \(prefers-reduced-motion: reduce\)[\s\S]*\.coding-cell\.is-sparkling/);
+    assert.match(css, /\.header\s*\{[\s\S]*?padding: 0;/);
+    assert.match(css, /#mainNav\.header\s*\{[\s\S]*?padding: 0;/);
+    assert.match(css, /\.nav-link\[aria-current="page"\]\s*\{[\s\S]*?color: #fffaf1 !important;/);
+});
+
+test('site configuration quotes colon values and uses a root-relative CV path', () => {
+    const config = fs.readFileSync('contents/config.yml', 'utf8');
+    assert.match(config, /^last-updated: ['"]Last updated: June 2026['"]$/m);
+    assert.match(config, /^cv-link-href: \/static\/assets\/Zhineng_Jin_CV\.pdf$/m);
 });

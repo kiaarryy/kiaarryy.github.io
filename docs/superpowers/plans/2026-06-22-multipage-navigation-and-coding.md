@@ -31,7 +31,7 @@
 - Create: `news/index.html`
 - Create: `awards/index.html`
 
-- [ ] **Step 1: Write the failing route test**
+- [x] **Step 1: Write the failing route test**
 
 ```js
 const test = require('node:test');
@@ -57,17 +57,17 @@ test('homepage contains Coding and no interior long-scroll sections', () => {
 });
 ```
 
-- [ ] **Step 2: Run the test and verify RED**
+- [x] **Step 2: Run the test and verify RED**
 
 Run: `node --test tests/site-structure.test.js`
 
 Expected: FAIL because route files and the Coding panel do not exist.
 
-- [ ] **Step 3: Implement the route documents**
+- [x] **Step 3: Implement the route documents**
 
 Use root-relative links (`/`, `/research/`, `/publications/`, `/news/`, `/awards/`, `/static/assets/Zhineng_Jin_CV.pdf`) and mark exactly one route with `aria-current="page"`. Interior pages contain their matching `*-md` target and a compact `.page-intro`.
 
-- [ ] **Step 4: Run the route test and verify GREEN**
+- [x] **Step 4: Run the route test and verify GREEN**
 
 Run: `node --test tests/site-structure.test.js`
 
@@ -80,7 +80,7 @@ Expected: 2 tests pass.
 - Create: `static/js/coding-activity.js`
 - Create: `contents/github-contributions.json`
 
-- [ ] **Step 1: Write failing pure-function tests**
+- [x] **Step 1: Write failing pure-function tests**
 
 ```js
 const test = require('node:test');
@@ -101,21 +101,21 @@ test('maps counts to five GitHub intensity levels', () => {
 });
 ```
 
-- [ ] **Step 2: Run the test and verify RED**
+- [x] **Step 2: Run the test and verify RED**
 
 Run: `node --test tests/coding-activity.test.js`
 
 Expected: FAIL because `coding-activity.js` does not exist.
 
-- [ ] **Step 3: Implement the minimal data module**
+- [x] **Step 3: Implement the minimal data module**
 
 Export `normalizeContributionPayload`, `contributionLevel`, and `buildYearDays` under CommonJS while initializing the browser component only when `document` exists. Fetch the live API first, then `/contents/github-contributions.json`, and label the source accurately.
 
-- [ ] **Step 4: Fetch and store the current contribution snapshot**
+- [x] **Step 4: Fetch and store the current contribution snapshot**
 
 Request `https://github-contributions-api.jogruber.de/v4/kiaarryy?y=all` and store its JSON response without fabricating dates or counts.
 
-- [ ] **Step 5: Run contribution tests and verify GREEN**
+- [x] **Step 5: Run contribution tests and verify GREEN**
 
 Run: `node --test tests/coding-activity.test.js`
 
@@ -128,21 +128,21 @@ Expected: all contribution tests pass.
 - Modify: `contents/config.yml`
 - Test: `tests/site-structure.test.js`
 
-- [ ] **Step 1: Extend the failing structure test**
+- [x] **Step 1: Extend the failing structure test**
 
 Assert that every route includes `/static/js/scripts.js`, uses a valid `data-page`, and contains only the Markdown target appropriate to that route.
 
-- [ ] **Step 2: Run the structure test and verify RED**
+- [x] **Step 2: Run the structure test and verify RED**
 
 Run: `node --test tests/site-structure.test.js`
 
 Expected: FAIL until all route contracts are present.
 
-- [ ] **Step 3: Refactor initialization**
+- [x] **Step 3: Refactor initialization**
 
 Replace unconditional `loadAllMarkdown()` behavior with a map from `body.dataset.page` to required Markdown names. Guard GitHub, spotlight, reveal, MathJax, and publication setup by element presence. Store language under one stable localStorage key and suppress the gateway after the first selection.
 
-- [ ] **Step 4: Run structure and syntax checks**
+- [x] **Step 4: Run structure and syntax checks**
 
 Run: `node --test tests/site-structure.test.js && node --check static/js/scripts.js`
 
@@ -154,21 +154,21 @@ Expected: route tests pass and syntax check exits 0.
 - Modify: `static/css/main.css`
 - Test: `tests/site-structure.test.js`
 
-- [ ] **Step 1: Extend the failing CSS contract test**
+- [x] **Step 1: Extend the failing CSS contract test**
 
 Read `static/css/main.css` and assert it contains `.nav-link[aria-current="page"]`, `.coding-grid`, `@keyframes coding-sparkle`, and a reduced-motion override.
 
-- [ ] **Step 2: Run the test and verify RED**
+- [x] **Step 2: Run the test and verify RED**
 
 Run: `node --test tests/site-structure.test.js`
 
 Expected: FAIL because the new selectors do not exist.
 
-- [ ] **Step 3: Add fixed navigation, page intro, and Coding styles**
+- [x] **Step 3: Add fixed navigation, page intro, and Coding styles**
 
 Implement the approved restrained editorial layout: 72px fixed translucent navigation, compact button states, one-level page compositions, stable contribution-cell dimensions, horizontal mobile scrolling, visible focus, and reduced-motion behavior.
 
-- [ ] **Step 4: Run all automated checks**
+- [x] **Step 4: Run all automated checks**
 
 Run: `node --test tests/*.test.js && node --check static/js/scripts.js && node --check static/js/coding-activity.js`
 
@@ -180,15 +180,15 @@ Expected: all tests pass and both syntax checks exit 0.
 - Inspect: all route documents and assets
 - Update: implementation plan checkboxes
 
-- [ ] **Step 1: Start the local server**
+- [x] **Step 1: Start the local server**
 
 Run: `python -m http.server 8765`
 
-- [ ] **Step 2: Verify desktop and mobile routes with Playwright CLI**
+- [x] **Step 2: Verify desktop and mobile routes with Playwright CLI**
 
 Check `/`, `/research/`, `/publications/`, `/news/`, `/awards/`, direct route refresh, fixed header position, active navigation, Coding cells/year selector, English/Chinese persistence, publication panels, console errors, and overflow at desktop and mobile widths.
 
-- [ ] **Step 3: Inspect the final diff and rerun full checks**
+- [x] **Step 3: Inspect the final diff and rerun full checks**
 
 Run: `rtk git diff`, `node --test tests/*.test.js`, and both `node --check` commands.
 

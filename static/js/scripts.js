@@ -16,6 +16,9 @@ const storedLang = localStorage.getItem('site-language');
 let currentLang = ['en', 'zh'].includes(requestedLang)
     ? requestedLang
     : ['en', 'zh'].includes(storedLang) ? storedLang : '';
+if (['en', 'zh'].includes(requestedLang)) {
+    localStorage.setItem('site-language', requestedLang);
+}
 let contributionRefreshTimer = null;
 
 const i18n = {
