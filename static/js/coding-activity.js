@@ -20,8 +20,27 @@
     const API_BASE = 'https://github-contributions-api.jogruber.de/v4';
     const USERNAME = 'kiaarryy';
     const SNAPSHOT_URL = '/contents/github-contributions.json';
+    const REFRESH_INTERVAL_MS = 5 * 60 * 1000;
     const cache = new Map();
     let sparkleTimer = null;
+
+    function buildLiveRequestUrl(year, now = Date.now()) {
+        const refreshSlot = Math.floor(now / REFRESH_INTERVAL_MS);
+        return `${API_BASE}/${encodeURIComponent(USERNAME)}?y=${year}&refresh=${refreshSlot}`;
+    }
+
+    function isCacheFresh(entry, now = Date.now()) {
+        return Boolean(entry && now - entry.fetchedAt < REFRESH_INTERVAL_MS);
+    }
+
+    function buildAnimationQueue(items, random = Math.random) {
+        const queue = Array.from(items);
+        for (let index = queue.length - 1; index > 0; index -= 1) {
+            const swapIndex = Math.floor(random() * (index + 1));
+            [queue[index], queue[swapIndex]] = [queue[swapIndex], queue[index]];
+        }
+        return queue;
+    }
 
     function buildYearDays(year) {
         const start = new Date(year, 0, 1);
@@ -201,9 +220,12 @@
     }
 
     return {
+        buildAnimationQueue,
+        buildLiveRequestUrl,
         buildYearDays,
         contributionLevel,
         initialize,
+        isCacheFresh,
         normalizeContributionPayload
     };
 }));

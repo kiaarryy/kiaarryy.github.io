@@ -42,3 +42,29 @@ test('builds full Sunday-to-Saturday weeks around a selected year', () => {
     assert.ok(days.some((date) => date.getFullYear() === 2026 && date.getMonth() === 0 && date.getDate() === 1));
     assert.ok(days.some((date) => date.getFullYear() === 2026 && date.getMonth() === 11 && date.getDate() === 31));
 });
+
+test('builds live request URLs with stable five-minute refresh slots', () => {
+    assert.equal(
+        coding.buildLiveRequestUrl(2026, 299999),
+        'https://github-contributions-api.jogruber.de/v4/kiaarryy?y=2026&refresh=0'
+    );
+    assert.equal(
+        coding.buildLiveRequestUrl(2026, 300000),
+        'https://github-contributions-api.jogruber.de/v4/kiaarryy?y=2026&refresh=1'
+    );
+});
+
+test('expires in-memory contribution data after five minutes', () => {
+    assert.equal(coding.isCacheFresh({ fetchedAt: 1000 }, 300999), true);
+    assert.equal(coding.isCacheFresh({ fetchedAt: 1000 }, 301000), false);
+    assert.equal(coding.isCacheFresh(null, 1000), false);
+});
+
+test('builds an animation queue containing each active cell exactly once', () => {
+    const cells = ['2026-05-15', '2026-05-18', '2026-05-21', '2026-05-24'];
+    const queue = coding.buildAnimationQueue(cells, () => 0.25);
+
+    assert.deepEqual([...queue].sort(), cells);
+    assert.equal(new Set(queue).size, cells.length);
+    assert.deepEqual(cells, ['2026-05-15', '2026-05-18', '2026-05-21', '2026-05-24']);
+});
