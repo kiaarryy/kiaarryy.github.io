@@ -23,6 +23,8 @@
     const REFRESH_INTERVAL_MS = 5 * 60 * 1000;
     const cache = new Map();
     let sparkleTimer = null;
+    let refreshTimer = null;
+    let renderSequence = 0;
 
     function buildLiveRequestUrl(year, now = Date.now()) {
         const refreshSlot = Math.floor(now / REFRESH_INTERVAL_MS);
@@ -104,34 +106,50 @@
                 live: 'GitHub 实时数据',
                 cached: 'GitHub 缓存数据',
                 unavailable: '贡献数据暂不可用',
-                contribution: ' 次贡献'
+                contribution: ' 次贡献',
+                updated: '更新于'
             }
             : {
                 loading: 'Loading GitHub ',
                 live: 'Live GitHub data',
                 cached: 'Cached GitHub data',
                 unavailable: 'Contribution data unavailable',
-                contribution: ' contributions'
+                contribution: ' contributions',
+                updated: 'Updated'
             };
     }
 
-    async function fetchJson(url) {
-        const response = await fetch(url, { cache: 'force-cache' });
+    async function fetchJson(url, fresh = false) {
+        const response = await fetch(url, { cache: fresh ? 'no-store' : 'no-cache' });
         if (!response.ok) throw new Error(`Contribution request failed: ${response.status}`);
         return response.json();
     }
 
-    async function loadContributionData(year) {
-        if (cache.has(year)) return cache.get(year);
+    async function loadContributionData(year, options = {}) {
+        const now = options.now ?? Date.now();
+        const force = Boolean(options.force);
+        const existing = cache.get(year);
+        if (!force && isCacheFresh(existing, now)) return existing.request;
 
-        const request = fetchJson(`${API_BASE}/${encodeURIComponent(USERNAME)}?y=${year}`)
-            .then((payload) => ({ map: normalizeContributionPayload(payload, year), source: 'live' }))
-            .catch(() => fetchJson(SNAPSHOT_URL)
+        const request = fetchJson(buildLiveRequestUrl(year, now), true)
+            .then((payload) => ({
+                map: normalizeContributionPayload(payload, year),
+                source: 'live',
+                refreshedAt: now
+            }))
+            .catch(() => existing?.request || fetchJson(SNAPSHOT_URL)
                 .then((payload) => ({ map: normalizeContributionPayload(payload, year), source: 'cached' })))
             .catch(() => ({ map: new Map(), source: 'unavailable' }));
 
-        cache.set(year, request);
+        cache.set(year, { fetchedAt: now, request });
         return request;
+    }
+
+    function formatRefreshTime(timestamp) {
+        return new Date(timestamp).toLocaleTimeString(isChinese() ? 'zh-CN' : 'en-US', {
+            hour: '2-digit',
+            minute: '2-digit'
+        });
     }
 
     function renderMonths(root, days, year) {
@@ -175,37 +193,61 @@
             cell.className = `coding-cell coding-level-${level}${count > 0 ? ' is-active' : ''}${inYear ? '' : ' outside-year'}`;
             cell.title = label;
             cell.setAttribute('aria-label', label);
+            cell.dataset.contributionDate = iso;
+            cell.dataset.contributionLevel = String(level);
+            if (count > 0) {
+                cell.style.setProperty('--coding-sparkle-scale', (1.08 + (level * 0.07)).toFixed(2));
+                cell.style.setProperty('--coding-sparkle-glow', `${6 + (level * 3)}px`);
+            }
             grid.appendChild(cell);
         });
 
         const daysNode = root.querySelector('[data-coding-days]');
         const sourceNode = root.querySelector('[data-coding-source]');
         if (daysNode) daysNode.textContent = String(codingDays);
-        if (sourceNode) sourceNode.textContent = `${copy()[data.source]} · ${year}`;
+        if (sourceNode) {
+            const refreshed = data.source === 'live' && data.refreshedAt
+                ? ` · ${copy().updated} ${formatRefreshTime(data.refreshedAt)}`
+                : '';
+            sourceNode.textContent = `${copy()[data.source]} · ${year}${refreshed}`;
+        }
     }
 
-    async function renderSelectedYear(root) {
+    async function renderSelectedYear(root, options = {}) {
+        const sequence = ++renderSequence;
         const select = root.querySelector('[data-coding-year]');
         const year = Number(select && select.value) || new Date().getFullYear();
         const sourceNode = root.querySelector('[data-coding-source]');
         if (sourceNode) sourceNode.textContent = `${copy().loading}${year}`;
-        renderGrid(root, year, await loadContributionData(year));
+        const data = await loadContributionData(year, options);
+        if (sequence !== renderSequence) return;
+        renderGrid(root, year, data);
+        startSparkles(root);
     }
 
     function startSparkles(root) {
         if (sparkleTimer) clearTimeout(sparkleTimer);
+        if (window.matchMedia?.('(prefers-reduced-motion: reduce)').matches) return;
+
+        const activeCells = Array.from(root.querySelectorAll('.coding-cell.is-active'));
+        let queue = buildAnimationQueue(activeCells);
+
+        function sparkleCell(cell) {
+            if (!cell.isConnected) return;
+            cell.classList.add('is-sparkling');
+            setTimeout(() => {
+                if (cell.isConnected) cell.classList.remove('is-sparkling');
+            }, 900);
+        }
 
         const sparkle = () => {
-            const cells = root.querySelectorAll('.coding-level-4.is-active');
-            if (cells.length) {
-                const cell = cells[Math.floor(Math.random() * cells.length)];
-                cell.classList.add('is-sparkling');
-                setTimeout(() => cell.classList.remove('is-sparkling'), 720);
-            }
-            sparkleTimer = setTimeout(sparkle, 180 + Math.random() * 420);
+            if (!queue.length) queue = buildAnimationQueue(activeCells);
+            const batchSize = activeCells.length > 10 && Math.random() > 0.45 ? 2 : 1;
+            queue.splice(0, batchSize).forEach(sparkleCell);
+            sparkleTimer = setTimeout(sparkle, 320 + Math.random() * 280);
         };
 
-        sparkleTimer = setTimeout(sparkle, 650);
+        if (activeCells.length) sparkleTimer = setTimeout(sparkle, 450);
     }
 
     function initialize(scope) {
@@ -215,8 +257,14 @@
 
         root.querySelector('[data-coding-year]')?.addEventListener('change', () => renderSelectedYear(root));
         window.addEventListener('site-language-change', () => renderSelectedYear(root));
+        document.addEventListener('visibilitychange', () => {
+            if (!document.hidden) renderSelectedYear(root, { force: true });
+        });
+        if (refreshTimer) clearInterval(refreshTimer);
+        refreshTimer = setInterval(() => {
+            if (!document.hidden) renderSelectedYear(root, { force: true });
+        }, REFRESH_INTERVAL_MS);
         renderSelectedYear(root);
-        startSparkles(root);
     }
 
     return {

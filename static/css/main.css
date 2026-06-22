@@ -1384,6 +1384,8 @@ a:hover {
 }
 
 .coding-cell {
+    --coding-sparkle-scale: 1.2;
+    --coding-sparkle-glow: 12px;
     width: var(--coding-cell-size);
     height: var(--coding-cell-size);
     display: inline-block;
@@ -1402,7 +1404,7 @@ a:hover {
 .coding-cell.is-sparkling {
     position: relative;
     z-index: 2;
-    animation: coding-sparkle 720ms ease both;
+    animation: coding-sparkle 900ms ease both;
 }
 
 @keyframes coding-sparkle {
@@ -1412,9 +1414,11 @@ a:hover {
         box-shadow: inset 0 0 0 1px rgba(27, 31, 36, 0.05);
     }
     45% {
-        transform: scale(1.42);
-        filter: brightness(1.35);
-        box-shadow: 0 0 0 2px rgba(64, 196, 99, 0.24), 0 0 18px rgba(64, 196, 99, 0.72);
+        transform: scale(var(--coding-sparkle-scale));
+        filter: brightness(1.28);
+        box-shadow:
+            0 0 0 2px rgba(64, 196, 99, 0.22),
+            0 0 var(--coding-sparkle-glow) rgba(64, 196, 99, 0.66);
     }
     100% {
         transform: scale(1);
