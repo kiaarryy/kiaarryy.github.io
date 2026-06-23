@@ -43,6 +43,40 @@ test('builds full Sunday-to-Saturday weeks around a selected year', () => {
     assert.ok(days.some((date) => date.getFullYear() === 2026 && date.getMonth() === 11 && date.getDate() === 31));
 });
 
+test('selects the current rolling GitHub period including dates from the previous year', () => {
+    const period = coding.selectContributionPeriod({
+        periods: {
+            2026: {
+                mode: 'rolling-year',
+                from: '2025-06-23',
+                to: '2026-06-23',
+                total: 125,
+                contributions: [
+                    { date: '2025-11-13', count: 5 },
+                    { date: '2026-06-22', count: 30 }
+                ]
+            }
+        }
+    }, 2026);
+
+    assert.equal(period.mode, 'rolling-year');
+    assert.equal(period.from, '2025-06-23');
+    assert.equal(period.to, '2026-06-23');
+    assert.equal(period.total, 125);
+    assert.equal(period.map.get('2025-11-13'), 5);
+    assert.equal(period.map.get('2026-06-22'), 30);
+});
+
+test('builds complete Sunday-to-Saturday weeks around a rolling period', () => {
+    const days = coding.buildPeriodDays('2025-06-23', '2026-06-23');
+
+    assert.equal(days.length % 7, 0);
+    assert.equal(days[0].getDay(), 0);
+    assert.equal(days.at(-1).getDay(), 6);
+    assert.equal(coding.toISO(days[0]), '2025-06-22');
+    assert.equal(coding.toISO(days.at(-1)), '2026-06-27');
+});
+
 test('builds cache-busted official snapshot URLs', () => {
     assert.equal(
         coding.buildSnapshotUrl(2026, 299999),

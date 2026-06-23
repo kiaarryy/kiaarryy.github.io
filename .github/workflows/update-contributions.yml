@@ -22,7 +22,7 @@ jobs:
           node-version: '24'
       - name: Refresh official contribution snapshot
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.CONTRIBUTIONS_PAT }}
           GITHUB_LOGIN: kiaarryy
         run: node scripts/update-github-contributions.mjs
       - name: Commit updated snapshot

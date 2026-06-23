@@ -15,6 +15,7 @@ const QUERY = `
 query($login: String!, $from: DateTime!, $to: DateTime!) {
   user(login: $login) {
     contributionsCollection(from: $from, to: $to) {
+      restrictedContributionsCount
       contributionCalendar {
         totalContributions
         weeks {
@@ -25,10 +26,34 @@ query($login: String!, $from: DateTime!, $to: DateTime!) {
   }
 }`;
 
-export function normalizeCalendar(calendar, year) {
+export function buildPeriodSpec(year, now = new Date()) {
+    const currentYear = now.getUTCFullYear();
+    if (Number(year) === currentYear) {
+        const from = new Date(Date.UTC(
+            currentYear - 1,
+            now.getUTCMonth(),
+            now.getUTCDate()
+        ));
+        return {
+            key: currentYear,
+            mode: 'rolling-year',
+            from: from.toISOString().slice(0, 10),
+            to: now.toISOString().slice(0, 10)
+        };
+    }
+
+    return {
+        key: Number(year),
+        mode: 'calendar-year',
+        from: `${year}-01-01`,
+        to: `${year}-12-31`
+    };
+}
+
+export function normalizeCalendar(calendar, period, restricted = 0) {
     const contributions = (calendar?.weeks || [])
         .flatMap((week) => week.contributionDays || [])
-        .filter((day) => Number(day.date?.slice(0, 4)) === Number(year))
+        .filter((day) => day.date >= period.from && day.date <= period.to)
         .map((day) => ({
             date: day.date,
             count: Number(day.contributionCount) || 0,
@@ -37,8 +62,12 @@ export function normalizeCalendar(calendar, year) {
         .sort((left, right) => left.date.localeCompare(right.date));
 
     return {
-        year: Number(year),
+        year: Number(period.key),
+        mode: period.mode,
+        from: period.from,
+        to: period.to,
         total: Number(calendar?.totalContributions) || 0,
+        restricted: Number(restricted) || 0,
         contributions
     };
 }
@@ -46,19 +75,21 @@ export function normalizeCalendar(calendar, year) {
 export function createSnapshot({ login, generatedAt, calendars }) {
     const ordered = [...calendars].sort((left, right) => left.year - right.year);
     return {
+        schemaVersion: 2,
         source: 'github-graphql',
         login,
         generatedAt,
         total: Object.fromEntries(ordered.map((calendar) => [calendar.year, calendar.total])),
-        contributions: ordered.flatMap((calendar) => calendar.contributions)
+        periods: Object.fromEntries(ordered.map((calendar) => [calendar.year, calendar]))
     };
 }
 
 async function fetchCalendar({ token, login, year, now }) {
-    const currentYear = now.getUTCFullYear();
-    const from = new Date(Date.UTC(year, 0, 1)).toISOString();
-    const endOfYear = new Date(Date.UTC(year, 11, 31, 23, 59, 59));
-    const to = (year === currentYear && now < endOfYear ? now : endOfYear).toISOString();
+    const period = buildPeriodSpec(year, now);
+    const from = `${period.from}T00:00:00.000Z`;
+    const to = year === now.getUTCFullYear()
+        ? now.toISOString()
+        : `${period.to}T23:59:59.999Z`;
     const response = await fetch(GRAPHQL_URL, {
         method: 'POST',
         headers: {
@@ -77,17 +108,19 @@ async function fetchCalendar({ token, login, year, now }) {
     if (payload.errors?.length) {
         throw new Error(`GitHub GraphQL error: ${payload.errors.map((error) => error.message).join('; ')}`);
     }
-    const calendar = payload.data?.user?.contributionsCollection?.contributionCalendar;
+    const collection = payload.data?.user?.contributionsCollection;
+    const calendar = collection?.contributionCalendar;
     if (!calendar) throw new Error(`No contribution calendar returned for ${login}`);
-    return normalizeCalendar(calendar, year);
+    return normalizeCalendar(calendar, period, collection.restrictedContributionsCount);
 }
 
 function semanticSignature(snapshot) {
     return JSON.stringify({
+        schemaVersion: snapshot?.schemaVersion,
         source: snapshot?.source,
         login: snapshot?.login,
         total: snapshot?.total,
-        contributions: snapshot?.contributions
+        periods: snapshot?.periods
     });
 }
 
@@ -135,8 +168,14 @@ async function main() {
         years: [currentYear - 1, currentYear],
         now
     });
-    const activeDays = result.snapshot.contributions.filter((day) => day.count > 0).length;
-    console.log(JSON.stringify({ changed: result.changed, total: result.snapshot.total, activeDays }));
+    const current = result.snapshot.periods[String(currentYear)];
+    const activeDays = current.contributions.filter((day) => day.count > 0).length;
+    console.log(JSON.stringify({
+        changed: result.changed,
+        total: result.snapshot.total,
+        activeDays,
+        restricted: current.restricted
+    }));
 }
 
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
