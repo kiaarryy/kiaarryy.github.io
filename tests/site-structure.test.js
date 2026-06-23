@@ -96,3 +96,13 @@ test('news pages combine three publication stories with an academic timeline', (
         assert.match(content, /National Scholarship|国家奖学金/);
     }
 });
+
+test('editorial styles unify navigation type and responsive story layouts', () => {
+    const css = fs.readFileSync('static/css/main.css', 'utf8');
+    assert.match(css, /\.nav-link\s*\{[^}]*font-family:\s*var\(--body-font\);[^}]*font-weight:\s*600;/s);
+    assert.match(css, /\.research-story h2,[\s\S]*?\.news-feature h2\s*\{[^}]*font-family:\s*var\(--display-font\);/);
+    assert.match(css, /\.research-story\s*\{[^}]*display:\s*grid;[^}]*grid-template-columns:/s);
+    assert.match(css, /\.news-feature\s*\{[^}]*display:\s*grid;[^}]*grid-template-columns:/s);
+    assert.match(css, /\.story-details summary:focus-visible\s*\{[^}]*outline:/s);
+    assert.match(css, /@media screen and \(max-width: 991px\)[\s\S]*?\.research-story,[\s\S]*?\.news-feature\s*\{[^}]*grid-template-columns:\s*1fr;/);
+});
