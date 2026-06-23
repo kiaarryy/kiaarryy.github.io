@@ -83,3 +83,16 @@ test('research pages present four figure-led stories with progressive disclosure
         assert.match(content, /doi\.org\/10\.1016\/j\.scs\.2023\.104942/);
     }
 });
+
+test('news pages combine three publication stories with an academic timeline', () => {
+    for (const file of ['contents/news.md', 'contents/news.zh.md']) {
+        const content = fs.readFileSync(file, 'utf8');
+        assert.equal((content.match(/class="news-feature"/g) || []).length, 3);
+        assert.equal((content.match(/<details class="story-details">/g) || []).length, 3);
+        assert.equal((content.match(/\/static\/assets\/img\/research\//g) || []).length, 3);
+        assert.match(content, /class="news-timeline"/);
+        assert.match(content, /BAS 2026/);
+        assert.match(content, /HKUST/);
+        assert.match(content, /National Scholarship|国家奖学金/);
+    }
+});
