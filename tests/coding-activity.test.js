@@ -43,15 +43,20 @@ test('builds full Sunday-to-Saturday weeks around a selected year', () => {
     assert.ok(days.some((date) => date.getFullYear() === 2026 && date.getMonth() === 11 && date.getDate() === 31));
 });
 
-test('builds live request URLs with stable five-minute refresh slots', () => {
+test('builds cache-busted official snapshot URLs', () => {
     assert.equal(
-        coding.buildLiveRequestUrl(2026, 299999),
-        'https://github-contributions-api.jogruber.de/v4/kiaarryy?y=2026&refresh=0'
+        coding.buildSnapshotUrl(2026, 299999),
+        '/contents/github-contributions.json?year=2026&refresh=0'
     );
     assert.equal(
-        coding.buildLiveRequestUrl(2026, 300000),
-        'https://github-contributions-api.jogruber.de/v4/kiaarryy?y=2026&refresh=1'
+        coding.buildSnapshotUrl(2026, 300000),
+        '/contents/github-contributions.json?year=2026&refresh=1'
     );
+});
+
+test('does not depend on the previous third-party contribution API', () => {
+    const source = require('node:fs').readFileSync('static/js/coding-activity.js', 'utf8');
+    assert.doesNotMatch(source, /jogruber\.de/);
 });
 
 test('expires in-memory contribution data after five minutes', () => {
