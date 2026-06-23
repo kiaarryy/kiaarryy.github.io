@@ -47,14 +47,14 @@ const i18n = {
         heroSecondaryLink: 'Contact',
         topSectionBgText: 'Climate-responsive buildings, HVAC intelligence, and urban energy modeling',
         profileLabel: 'Profile',
-        codingLabel: 'Live GitHub Activity',
+        codingLabel: 'Official GitHub Activity',
         codingHeading: 'Small proofs, stacked every day.',
         codingDaysLabel: 'coding days',
         codingTitle: 'Coding',
         codingYearLabel: 'Year',
         codingLessLabel: 'Less',
         codingMoreLabel: 'More',
-        githubLabel: 'Live GitHub Activity',
+        githubLabel: 'Official GitHub Activity',
         githubKicker: 'Synchronized from GitHub public data',
         githubTitle: 'Open-source work and recent repository activity',
         githubProfileCta: 'View GitHub',
@@ -110,14 +110,14 @@ const i18n = {
         heroSecondaryLink: '联系方式',
         topSectionBgText: '气候响应型建筑、HVAC 智能化与城市能源建模',
         profileLabel: '个人简介',
-        codingLabel: 'GitHub 实时动态',
+        codingLabel: 'GitHub 官方贡献',
         codingHeading: '日积跬步，持续构建。',
         codingDaysLabel: '个编程日',
         codingTitle: '编程活动',
         codingYearLabel: '年份',
         codingLessLabel: '较少',
         codingMoreLabel: '较多',
-        githubLabel: 'GitHub 实时动态',
+        githubLabel: 'GitHub 官方贡献',
         githubKicker: '同步自 GitHub 公开数据',
         githubTitle: '开源工作与近期仓库更新',
         githubProfileCta: '打开 GitHub',
@@ -788,7 +788,7 @@ function decorateExternalLinks(section) {
 }
 
 function decorateListItems(section, className) {
-    section.querySelectorAll('li').forEach((item, index) => {
+    section.querySelectorAll(':scope > ul > li, :scope > ol > li').forEach((item, index) => {
         item.classList.add(className, 'spotlight-card');
         item.style.setProperty('--reveal-delay', `${Math.min(index * 55, 420)}ms`);
     });
@@ -1185,4 +1185,5 @@ window.addEventListener('DOMContentLoaded', async () => {
     await loadPageMarkdown();
     setupSpotlightCards(document);
     setupReveals(document);
+    window.dispatchEvent(new CustomEvent('site-language-change', { detail: { lang: currentLang } }));
 });

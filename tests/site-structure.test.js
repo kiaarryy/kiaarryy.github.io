@@ -37,6 +37,8 @@ test('each route owns only its intended Markdown target', () => {
 test('homepage contains Coding and no interior long-scroll sections', () => {
     const html = fs.readFileSync('index.html', 'utf8');
     assert.match(html, /data-coding-activity/);
+    assert.match(html, />Official GitHub Activity</);
+    assert.doesNotMatch(html, />Live GitHub Activity</);
     assert.doesNotMatch(html, /id="research"/);
     assert.doesNotMatch(html, /id="publications"/);
     assert.doesNotMatch(html, /id="news"/);
@@ -51,6 +53,7 @@ test('shared script is route-aware and uses root-relative content paths', () => 
     assert.match(script, /new CustomEvent\('site-language-change'/);
     assert.doesNotMatch(script, /await loadAllMarkdown\(\)/);
     assert.match(script, /localStorage\.setItem\('site-language', requestedLang\)/);
+    assert.match(script, /setupReveals\(document\);\s*window\.dispatchEvent\(new CustomEvent\('site-language-change'/);
 });
 
 test('shared styles define fixed active navigation and accessible Coding motion', () => {
@@ -105,4 +108,9 @@ test('editorial styles unify navigation type and responsive story layouts', () =
     assert.match(css, /\.news-feature\s*\{[^}]*display:\s*grid;[^}]*grid-template-columns:/s);
     assert.match(css, /\.story-details summary:focus-visible\s*\{[^}]*outline:/s);
     assert.match(css, /@media screen and \(max-width: 991px\)[\s\S]*?\.research-story,[\s\S]*?\.news-feature\s*\{[^}]*grid-template-columns:\s*1fr;/);
+});
+
+test('legacy list decoration does not overwrite structured editorial lists', () => {
+    const script = fs.readFileSync('static/js/scripts.js', 'utf8');
+    assert.match(script, /querySelectorAll\(':scope > ul > li, :scope > ol > li'\)/);
 });
