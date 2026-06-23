@@ -69,3 +69,17 @@ test('site configuration quotes colon values and uses a root-relative CV path', 
     assert.match(config, /^last-updated: ['"]Last updated: June 2026['"]$/m);
     assert.match(config, /^cv-link-href: \/static\/assets\/Zhineng_Jin_CV\.pdf$/m);
 });
+
+test('research pages present four figure-led stories with progressive disclosure', () => {
+    for (const file of ['contents/research.md', 'contents/research.zh.md']) {
+        const content = fs.readFileSync(file, 'utf8');
+        assert.equal((content.match(/class="research-story/g) || []).length, 4);
+        assert.equal((content.match(/<details class="story-details">/g) || []).length, 4);
+        assert.equal((content.match(/\/static\/assets\/img\/research\//g) || []).length, 5);
+        assert.equal((content.match(/<img[^>]+alt="[^"]+"/g) || []).length, 5);
+        assert.match(content, /doi\.org\/10\.1016\/j\.energy\.2026\.141700/);
+        assert.match(content, /doi\.org\/10\.1016\/j\.energy\.2025\.137501/);
+        assert.match(content, /doi\.org\/10\.1016\/j\.enbuild\.2024\.115175/);
+        assert.match(content, /doi\.org\/10\.1016\/j\.scs\.2023\.104942/);
+    }
+});
