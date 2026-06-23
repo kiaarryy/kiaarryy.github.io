@@ -57,6 +57,26 @@
         return days;
     }
 
+    function parseISODate(value) {
+        const [year, month, day] = String(value).split('-').map(Number);
+        return new Date(year, month - 1, day);
+    }
+
+    function buildPeriodDays(from, to) {
+        const start = parseISODate(from);
+        const end = parseISODate(to);
+        start.setDate(start.getDate() - start.getDay());
+        end.setDate(end.getDate() + (6 - end.getDay()));
+
+        const days = [];
+        const cursor = new Date(start);
+        while (cursor <= end) {
+            days.push(new Date(cursor));
+            cursor.setDate(cursor.getDate() + 1);
+        }
+        return days;
+    }
+
     function toISO(date) {
         const year = date.getFullYear();
         const month = String(date.getMonth() + 1).padStart(2, '0');
@@ -83,6 +103,33 @@
             }
         });
         return map;
+    }
+
+    function selectContributionPeriod(payload, year) {
+        const record = payload?.periods?.[String(year)];
+        if (!record) {
+            const map = normalizeContributionPayload(payload, year);
+            return {
+                mode: 'calendar-year',
+                from: `${year}-01-01`,
+                to: `${year}-12-31`,
+                total: Number(payload?.total?.[String(year)]) || Array.from(map.values()).reduce((sum, count) => sum + count, 0),
+                map
+            };
+        }
+
+        const map = new Map();
+        (record.contributions || []).forEach((item) => {
+            const count = Number(item?.count ?? item?.contributionCount) || 0;
+            if (item?.date >= record.from && item.date <= record.to) map.set(item.date, count);
+        });
+        return {
+            mode: record.mode,
+            from: record.from,
+            to: record.to,
+            total: Number(record.total) || 0,
+            map
+        };
     }
 
     function contributionLevel(count) {
@@ -115,6 +162,20 @@
             };
     }
 
+    function periodCopy() {
+        return isChinese()
+            ? {
+                rollingPeriod: '\u8fc7\u53bb\u4e00\u5e74',
+                rollingSummary: '\u6b21\u8d21\u732e\uff08\u8fc7\u53bb\u4e00\u5e74\uff09',
+                yearSummary: '\u6b21\u8d21\u732e'
+            }
+            : {
+                rollingPeriod: 'Last year',
+                rollingSummary: 'contributions in the last year',
+                yearSummary: 'contributions'
+            };
+    }
+
     async function fetchJson(url, fresh = false) {
         const response = await fetch(url, { cache: fresh ? 'no-store' : 'no-cache' });
         if (!response.ok) throw new Error(`Contribution request failed: ${response.status}`);
@@ -129,12 +190,19 @@
 
         const request = fetchJson(buildSnapshotUrl(year, now), true)
             .then((payload) => ({
-                map: normalizeContributionPayload(payload, year),
+                ...selectContributionPeriod(payload, year),
                 source: 'official',
                 syncedAt: payload.generatedAt
             }))
             .catch(() => existing?.request || Promise.reject(new Error('No contribution snapshot available')))
-            .catch(() => ({ map: new Map(), source: 'unavailable' }));
+            .catch(() => ({
+                map: new Map(),
+                mode: 'calendar-year',
+                from: `${year}-01-01`,
+                to: `${year}-12-31`,
+                total: 0,
+                source: 'unavailable'
+            }));
 
         cache.set(year, { fetchedAt: now, request });
         return request;
@@ -150,7 +218,7 @@
         });
     }
 
-    function renderMonths(root, days, year) {
+    function renderMonths(root, days, period) {
         const row = root.querySelector('[data-coding-months]');
         if (!row) return;
 
@@ -158,37 +226,39 @@
         row.innerHTML = '';
         row.style.gridTemplateColumns = `repeat(${weekCount}, var(--coding-cell-size))`;
 
-        days.forEach((date, index) => {
-            if (date.getFullYear() !== year || date.getDate() !== 1) return;
+        let previousMonth = -1;
+        for (let index = 0; index < days.length; index += 7) {
+            const visibleDate = days.slice(index, index + 7)
+                .find((date) => toISO(date) >= period.from && toISO(date) <= period.to);
+            if (!visibleDate || visibleDate.getMonth() === previousMonth) continue;
             const label = document.createElement('span');
-            label.textContent = date.toLocaleString(isChinese() ? 'zh-CN' : 'en-US', { month: 'short' });
+            label.textContent = visibleDate.toLocaleString(isChinese() ? 'zh-CN' : 'en-US', { month: 'short' });
             label.style.gridColumn = `${Math.floor(index / 7) + 1} / span 4`;
             row.appendChild(label);
-        });
+            previousMonth = visibleDate.getMonth();
+        }
     }
 
     function renderGrid(root, year, data) {
         const grid = root.querySelector('[data-coding-grid]');
         if (!grid) return;
 
-        const days = buildYearDays(year);
+        const days = buildPeriodDays(data.from, data.to);
         const weekCount = Math.ceil(days.length / 7);
-        let codingDays = 0;
-        renderMonths(root, days, year);
+        renderMonths(root, days, data);
         grid.innerHTML = '';
         grid.style.gridTemplateColumns = `repeat(${weekCount}, var(--coding-cell-size))`;
 
         days.forEach((date) => {
             const iso = toISO(date);
-            const inYear = date.getFullYear() === year;
-            const count = inYear ? data.map.get(iso) || 0 : 0;
+            const inPeriod = iso >= data.from && iso <= data.to;
+            const count = inPeriod ? data.map.get(iso) || 0 : 0;
             const level = contributionLevel(count);
-            if (count > 0) codingDays += 1;
 
             const cell = document.createElement('span');
             const formattedDate = date.toLocaleDateString(isChinese() ? 'zh-CN' : 'en-US');
             const label = `${formattedDate}: ${count}${copy().contribution}`;
-            cell.className = `coding-cell coding-level-${level}${count > 0 ? ' is-active' : ''}${inYear ? '' : ' outside-year'}`;
+            cell.className = `coding-cell coding-level-${level}${count > 0 ? ' is-active' : ''}${inPeriod ? '' : ' outside-year'}`;
             cell.title = label;
             cell.setAttribute('aria-label', label);
             cell.dataset.contributionDate = iso;
@@ -200,14 +270,21 @@
             grid.appendChild(cell);
         });
 
-        const daysNode = root.querySelector('[data-coding-days]');
+        const totalNode = root.querySelector('[data-coding-total]');
+        const summaryLabel = root.querySelector('#coding-days-label');
         const sourceNode = root.querySelector('[data-coding-source]');
-        if (daysNode) daysNode.textContent = String(codingDays);
+        if (totalNode) totalNode.textContent = String(data.total);
+        if (summaryLabel) {
+            summaryLabel.textContent = data.mode === 'rolling-year'
+                ? periodCopy().rollingSummary
+                : periodCopy().yearSummary;
+        }
         if (sourceNode) {
             const refreshed = data.source === 'official' && data.syncedAt
-                ? ` · ${copy().synced} ${formatSyncTime(data.syncedAt)}`
+                ? ` \u00b7 ${copy().synced} ${formatSyncTime(data.syncedAt)}`
                 : '';
-            sourceNode.textContent = `${copy()[data.source]} · ${year}${refreshed}`;
+            const periodLabel = data.mode === 'rolling-year' ? periodCopy().rollingPeriod : String(year);
+            sourceNode.textContent = `${copy()[data.source]} \u00b7 ${periodLabel}${refreshed}`;
         }
     }
 
@@ -267,11 +344,14 @@
 
     return {
         buildAnimationQueue,
+        buildPeriodDays,
         buildSnapshotUrl,
         buildYearDays,
         contributionLevel,
         initialize,
         isCacheFresh,
-        normalizeContributionPayload
+        normalizeContributionPayload,
+        selectContributionPeriod,
+        toISO
     };
 }));

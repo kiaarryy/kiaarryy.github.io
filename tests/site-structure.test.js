@@ -45,6 +45,19 @@ test('homepage contains Coding and no interior long-scroll sections', () => {
     assert.doesNotMatch(html, /id="awards"/);
 });
 
+test('homepage labels the GitHub summary as contributions rather than active days', () => {
+    const html = fs.readFileSync('index.html', 'utf8');
+    assert.match(html, /data-coding-total/);
+    assert.match(html, />contributions in the last year</);
+    assert.doesNotMatch(html, /data-coding-days/);
+});
+
+test('scheduled contribution sync requires the personal contribution token', () => {
+    const workflow = fs.readFileSync('.github/workflows/update-contributions.yml', 'utf8');
+    assert.match(workflow, /GH_TOKEN:\s*\$\{\{ secrets\.CONTRIBUTIONS_PAT \}\}/);
+    assert.doesNotMatch(workflow, /GH_TOKEN:\s*\$\{\{ secrets\.GITHUB_TOKEN \}\}/);
+});
+
 test('shared script is route-aware and uses root-relative content paths', () => {
     const script = fs.readFileSync('static/js/scripts.js', 'utf8');
     assert.match(script, /const contentDir = '\/contents\/'/);
