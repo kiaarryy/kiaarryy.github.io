@@ -17,8 +17,6 @@
 }(typeof window !== 'undefined' ? window : null, function () {
     'use strict';
 
-    const API_BASE = 'https://github-contributions-api.jogruber.de/v4';
-    const USERNAME = 'kiaarryy';
     const SNAPSHOT_URL = '/contents/github-contributions.json';
     const REFRESH_INTERVAL_MS = 5 * 60 * 1000;
     const cache = new Map();
@@ -26,9 +24,9 @@
     let refreshTimer = null;
     let renderSequence = 0;
 
-    function buildLiveRequestUrl(year, now = Date.now()) {
+    function buildSnapshotUrl(year, now = Date.now()) {
         const refreshSlot = Math.floor(now / REFRESH_INTERVAL_MS);
-        return `${API_BASE}/${encodeURIComponent(USERNAME)}?y=${year}&refresh=${refreshSlot}`;
+        return `${SNAPSHOT_URL}?year=${year}&refresh=${refreshSlot}`;
     }
 
     function isCacheFresh(entry, now = Date.now()) {
@@ -103,19 +101,17 @@
         return isChinese()
             ? {
                 loading: '正在加载 GitHub ',
-                live: 'GitHub 实时数据',
-                cached: 'GitHub 缓存数据',
+                official: 'GitHub 官方数据',
                 unavailable: '贡献数据暂不可用',
                 contribution: ' 次贡献',
-                updated: '更新于'
+                synced: '同步于'
             }
             : {
                 loading: 'Loading GitHub ',
-                live: 'Live GitHub data',
-                cached: 'Cached GitHub data',
+                official: 'Official GitHub data',
                 unavailable: 'Contribution data unavailable',
                 contribution: ' contributions',
-                updated: 'Updated'
+                synced: 'Synced'
             };
     }
 
@@ -131,22 +127,24 @@
         const existing = cache.get(year);
         if (!force && isCacheFresh(existing, now)) return existing.request;
 
-        const request = fetchJson(buildLiveRequestUrl(year, now), true)
+        const request = fetchJson(buildSnapshotUrl(year, now), true)
             .then((payload) => ({
                 map: normalizeContributionPayload(payload, year),
-                source: 'live',
-                refreshedAt: now
+                source: 'official',
+                syncedAt: payload.generatedAt
             }))
-            .catch(() => existing?.request || fetchJson(SNAPSHOT_URL)
-                .then((payload) => ({ map: normalizeContributionPayload(payload, year), source: 'cached' })))
+            .catch(() => existing?.request || Promise.reject(new Error('No contribution snapshot available')))
             .catch(() => ({ map: new Map(), source: 'unavailable' }));
 
         cache.set(year, { fetchedAt: now, request });
         return request;
     }
 
-    function formatRefreshTime(timestamp) {
-        return new Date(timestamp).toLocaleTimeString(isChinese() ? 'zh-CN' : 'en-US', {
+    function formatSyncTime(timestamp) {
+        return new Date(timestamp).toLocaleString(isChinese() ? 'zh-CN' : 'en-US', {
+            year: 'numeric',
+            month: 'short',
+            day: 'numeric',
             hour: '2-digit',
             minute: '2-digit'
         });
@@ -206,8 +204,8 @@
         const sourceNode = root.querySelector('[data-coding-source]');
         if (daysNode) daysNode.textContent = String(codingDays);
         if (sourceNode) {
-            const refreshed = data.source === 'live' && data.refreshedAt
-                ? ` · ${copy().updated} ${formatRefreshTime(data.refreshedAt)}`
+            const refreshed = data.source === 'official' && data.syncedAt
+                ? ` · ${copy().synced} ${formatSyncTime(data.syncedAt)}`
                 : '';
             sourceNode.textContent = `${copy()[data.source]} · ${year}${refreshed}`;
         }
@@ -269,7 +267,7 @@
 
     return {
         buildAnimationQueue,
-        buildLiveRequestUrl,
+        buildSnapshotUrl,
         buildYearDays,
         contributionLevel,
         initialize,
