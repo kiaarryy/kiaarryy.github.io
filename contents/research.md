@@ -2,6 +2,32 @@
 
 <article class="research-story">
   <div class="story-copy">
+    <p class="story-meta">Climate-responsive design · Energy &amp; Buildings · 2026</p>
+    <h2>Robust atrium geometry across five climates</h2>
+    <p class="story-lead">A measurement-informed benchmark and 39,202 simulated atrium configurations per climate reveal design ranges that remain energy-efficient from Guangzhou to Harbin, while distribution-preserving meta-sampling keeps the analysis practical.</p>
+    <ul class="evidence-list" aria-label="Key evidence">
+      <li><strong>5</strong><span>Chinese climates compared</span></li>
+      <li><strong>75%</strong><span>less simulation demand</span></li>
+      <li><strong>240–360 m²</strong><span>robust atrium area</span></li>
+    </ul>
+    <details class="story-details">
+      <summary>Learn more <span aria-hidden="true">↘</span></summary>
+      <div class="story-details__body">
+        <p><strong>Method.</strong> A public-building archetype informed by field campaigns in three climate zones was calibrated in Chengdu to a CV(RMSE) below 5%. EnergyPlus then evaluated the same 39,202-form library in Guangzhou, Chengdu, Guiyang, Tianjin, and Harbin, followed by distribution-preserving meta-sampling and Sobol' sensitivity analysis.</p>
+        <p><strong>Finding.</strong> Atrium floor area, external atrium facade area, and east-facing openings form a climate-robust control triad for cooling and total energy use. A one-quarter meta-sample preserved the energy distributions and dominant sensitivity structure while reducing simulation demand by 75%.</p>
+        <p><strong>Design guidance.</strong> The most reliable window combines 240–360 m² of atrium floor area, one to three atria, and 500–1500 m² of external atrium facade. These are typology-level ranges for early decisions and should be recalibrated against each project's programme, envelope, systems, and local climate.</p>
+        <p><a href="https://doi.org/10.1016/j.enbuild.2026.117980">Read the paper in <em>Energy &amp; Buildings</em></a></p>
+      </div>
+    </details>
+  </div>
+  <figure class="story-figure">
+    <img src="/static/assets/img/research/climate-responsive-atrium-five-climates.png" alt="Research workflow linking parametric public-building atrium generation, a 39,202-model library, and simulations for Guangzhou, Chengdu, Guiyang, Tianjin, and Harbin" loading="lazy">
+    <figcaption>Multi-climate benchmark model library and analysis workflow. Figure 1, Jin et al., <em>Energy &amp; Buildings</em> 369 (2026).</figcaption>
+  </figure>
+</article>
+
+<article class="research-story">
+  <div class="story-copy">
     <p class="story-meta">Operational intelligence · Energy · 2026</p>
     <h2>From raw BMS data to executable building models</h2>
     <p class="story-lead">AutoModelling closes the gap between messy operational records and simulation-ready digital twins. The workflow connects semantic point mapping, data quality control, steady-state screening, candidate-model identification, Modelica generation, and simulation-based validation.</p>

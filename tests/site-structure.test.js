@@ -82,17 +82,25 @@ test('shared styles define fixed active navigation and accessible Coding motion'
 
 test('site configuration quotes colon values and uses a root-relative CV path', () => {
     const config = fs.readFileSync('contents/config.yml', 'utf8');
-    assert.match(config, /^last-updated: ['"]Last updated: June 2026['"]$/m);
+    const script = fs.readFileSync('static/js/scripts.js', 'utf8');
+    assert.match(config, /^last-updated: ['"]Last updated: July 2026['"]$/m);
     assert.match(config, /^cv-link-href: \/static\/assets\/Zhineng_Jin_CV\.pdf$/m);
+    assert.match(script, /lastUpdated: 'Last updated: July 2026'/);
+    assert.match(script, /lastUpdated: '最后更新：2026 年 7 月'/);
+
+    for (const [route] of routes) {
+        assert.match(fs.readFileSync(route, 'utf8'), /Last updated: July 2026/);
+    }
 });
 
-test('research pages present four figure-led stories with progressive disclosure', () => {
+test('research pages present five figure-led stories with progressive disclosure', () => {
     for (const file of ['contents/research.md', 'contents/research.zh.md']) {
         const content = fs.readFileSync(file, 'utf8');
-        assert.equal((content.match(/class="research-story/g) || []).length, 4);
-        assert.equal((content.match(/<details class="story-details">/g) || []).length, 4);
-        assert.equal((content.match(/\/static\/assets\/img\/research\//g) || []).length, 5);
-        assert.equal((content.match(/<img[^>]+alt="[^"]+"/g) || []).length, 5);
+        assert.equal((content.match(/class="research-story/g) || []).length, 5);
+        assert.equal((content.match(/<details class="story-details">/g) || []).length, 5);
+        assert.equal((content.match(/\/static\/assets\/img\/research\//g) || []).length, 6);
+        assert.equal((content.match(/<img[^>]+alt="[^"]+"/g) || []).length, 6);
+        assert.match(content, /doi\.org\/10\.1016\/j\.enbuild\.2026\.117980/);
         assert.match(content, /doi\.org\/10\.1016\/j\.energy\.2026\.141700/);
         assert.match(content, /doi\.org\/10\.1016\/j\.energy\.2025\.137501/);
         assert.match(content, /doi\.org\/10\.1016\/j\.enbuild\.2024\.115175/);
@@ -100,17 +108,37 @@ test('research pages present four figure-led stories with progressive disclosure
     }
 });
 
-test('news pages combine three publication stories with an academic timeline', () => {
+test('news pages combine four publication stories with an academic timeline', () => {
     for (const file of ['contents/news.md', 'contents/news.zh.md']) {
         const content = fs.readFileSync(file, 'utf8');
-        assert.equal((content.match(/class="news-feature"/g) || []).length, 3);
-        assert.equal((content.match(/<details class="story-details">/g) || []).length, 3);
-        assert.equal((content.match(/\/static\/assets\/img\/research\//g) || []).length, 3);
+        assert.equal((content.match(/class="news-feature"/g) || []).length, 4);
+        assert.equal((content.match(/<details class="story-details">/g) || []).length, 4);
+        assert.equal((content.match(/\/static\/assets\/img\/research\//g) || []).length, 4);
+        assert.match(content, /doi\.org\/10\.1016\/j\.enbuild\.2026\.117980/);
         assert.match(content, /class="news-timeline"/);
         assert.match(content, /BAS 2026/);
         assert.match(content, /HKUST/);
         assert.match(content, /National Scholarship|国家奖学金/);
     }
+});
+
+test('final atrium paper replaces the submitted record in both languages', () => {
+    for (const file of ['contents/publications.md', 'contents/publications.zh.md']) {
+        const content = fs.readFileSync(file, 'utf8');
+        assert.doesNotMatch(content, /Towards Climate-Responsive Atrium Design/);
+        assert.doesNotMatch(content, /Under Review/);
+        assert.match(content, /Climate-responsive atrium geometry in large public buildings/);
+        assert.match(content, /Energy & Buildings<\/strong> 369 \(2026\): 117980/);
+        assert.match(content, /doi\.org\/10\.1016\/j\.enbuild\.2026\.117980/);
+    }
+
+    const script = fs.readFileSync('static/js/scripts.js', 'utf8');
+    assert.doesNotMatch(script, /Towards Climate-Responsive Atrium Design/);
+    assert.doesNotMatch(script, /Under Review/);
+    assert.match(script, /Climate-responsive atrium geometry in large public buildings/);
+    assert.match(script, /static\/assets\/img\/journals\/energy-and-buildings\.jpg/);
+    assert.match(script, /doi\.org\/10\.1016\/j\.enbuild\.2026\.117980/);
+    assert.match(script, /39,202 configurations per climate/);
 });
 
 test('editorial styles unify navigation type and responsive story layouts', () => {

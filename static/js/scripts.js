@@ -73,7 +73,7 @@ const i18n = {
         awardsHeading: 'Awards',
         awardsIntro: 'Honors recognizing research, academic performance, and professional development.',
         footerNote: 'Built on GitHub Pages',
-        lastUpdated: 'Last updated: June 2026',
+        lastUpdated: 'Last updated: July 2026',
         statsRepos: 'Repos',
         statsFollowers: 'Followers',
         statsUpdated: 'Updated',
@@ -136,7 +136,7 @@ const i18n = {
         awardsHeading: '荣誉',
         awardsIntro: '科研、学业表现与专业发展相关荣誉。',
         footerNote: '基于 GitHub Pages 构建',
-        lastUpdated: '最后更新：2026 年 6 月',
+        lastUpdated: '最后更新：2026 年 7 月',
         statsRepos: '仓库',
         statsFollowers: '关注者',
         statsUpdated: '更新',
@@ -168,18 +168,19 @@ const publicationDetails = [
         }
     },
     {
-        match: 'Towards Climate-Responsive Atrium Design',
-        journal: 'Under Review',
-        year: 'Under Review',
+        match: 'Climate-responsive atrium geometry in large public buildings',
+        journal: 'Energy & Buildings',
+        year: '2026',
+        cover: 'static/assets/img/journals/energy-and-buildings.jpg',
         en: {
-            highlight: 'A climate-responsive parametric study for atrium-centered public buildings.',
-            abstract: 'This under-review manuscript investigates atrium design across multiple climate settings using meta-sample modeling, focusing on how geometry and climate interact to shape energy and environmental performance.',
-            citation: 'Jin, Z. et al. Towards Climate-Responsive Atrium Design: A Parametric Multi-Climate Analysis Using Meta-Sample Modeling. Under Review.'
+            highlight: 'Identified climate-robust atrium geometry ranges from 39,202 configurations per climate across five Chinese climates.',
+            abstract: 'This study combines a measurement-informed public-building archetype, a parametric EnergyPlus library, distribution-preserving meta-sampling, and global sensitivity analysis to identify atrium geometry ranges that remain energy-efficient across five climates. Atrium area, external atrium facade area, and east-facing openings consistently dominate cooling and total energy use, while medium-sized, weakly fragmented atria provide the most reliable savings.',
+            citation: 'Jin, Zhineng, Hongli Sun, Junkang Song, Wenke Zhong, Zishuang Xia, Hanjie Zheng, Changqi Wen, Bin Xu, and Borong Lin. "Climate-responsive atrium geometry in large public buildings: meta-sample modelling and robust energy-saving ranges across five climates." Energy & Buildings 369 (2026): 117980. https://doi.org/10.1016/j.enbuild.2026.117980.'
         },
         zh: {
-            highlight: '面向中庭式公共建筑的气候响应型参数化研究。',
-            abstract: '该投稿论文利用元样本建模开展多气候区中庭设计分析，关注几何参数与气候条件如何共同影响建筑能耗和室内环境表现。',
-            citation: 'Jin, Z. 等. Towards Climate-Responsive Atrium Design: A Parametric Multi-Climate Analysis Using Meta-Sample Modeling. Under Review.'
+            highlight: '基于五种中国气候中每种 39,202 组构型，识别跨气候稳健的中庭几何设计范围。',
+            abstract: '研究融合基于实测信息的公共建筑原型、参数化 EnergyPlus 模型库、保留分布特征的元样本方法与全局敏感性分析，识别在五种气候下均保持节能稳健性的中庭几何范围。中庭面积、外部中庭立面面积与东向开口持续主导制冷和总能耗，而中等尺度、低碎片化的中庭能够提供更可靠的节能表现。',
+            citation: 'Jin, Zhineng, Hongli Sun, Junkang Song, Wenke Zhong, Zishuang Xia, Hanjie Zheng, Changqi Wen, Bin Xu, and Borong Lin. "Climate-responsive atrium geometry in large public buildings: meta-sample modelling and robust energy-saving ranges across five climates." Energy & Buildings 369 (2026): 117980. https://doi.org/10.1016/j.enbuild.2026.117980.'
         }
     },
     {
@@ -406,32 +407,34 @@ const publicationRecords = [
         }
     },
     {
-        match: 'Towards Climate-Responsive Atrium Design',
-        title: 'Towards Climate-Responsive Atrium Design: A Parametric Multi-Climate Analysis Using Meta-Sample Modeling',
+        match: 'Climate-responsive atrium geometry in large public buildings',
+        title: 'Climate-responsive atrium geometry in large public buildings: meta-sample modelling and robust energy-saving ranges across five climates',
         authors: 'Jin, Zhineng; Hongli Sun; Junkang Song; Wenke Zhong; Zishuang Xia; Hanjie Zheng; Changqi Wen; Bin Xu; Borong Lin',
-        firstAffiliation: 'Department of Civil and Environmental Engineering, The Hong Kong University of Science and Technology, Hong Kong, China',
-        journal: 'Under Review',
-        year: 'Under Review',
-        cover: '',
+        firstAffiliation: 'College of Architecture and Environment, Sichuan University, Chengdu 610065, China',
+        journal: 'Energy & Buildings',
+        year: '2026',
+        cover: 'static/assets/img/journals/energy-and-buildings.jpg',
         en: {
             highlights: [
-                'Develops a parametric multi-climate analysis workflow for atrium-centered public buildings.',
-                'Uses meta-sample modeling to connect design parameters with climate-responsive performance.',
-                'Focuses on the interaction between atrium geometry, climate conditions, and energy behavior.',
-                'Provides early-stage design evidence for optimizing atrium form across climatic contexts.'
+                'Evaluates 39,202 configurations per climate across Guangzhou, Chengdu, Guiyang, Tianjin, and Harbin.',
+                'Calibrates a measurement-informed benchmark archetype to a CV(RMSE) below 5%.',
+                'Reduces simulation demand by 75% while preserving energy distributions and dominant Sobol sensitivity rankings.',
+                'Identifies atrium area, external atrium facade area, and east-facing openings as a climate-robust control triad.',
+                'Recommends a robust window of 240-360 m² atrium area, one to three atria, and 500-1500 m² external atrium facade.'
             ],
-            abstract: 'This under-review manuscript investigates atrium design across multiple climate settings using meta-sample modeling, focusing on how geometry and climate interact to shape energy and environmental performance.',
-            citation: 'Jin, Z. et al. Towards Climate-Responsive Atrium Design: A Parametric Multi-Climate Analysis Using Meta-Sample Modeling. Under Review.'
+            abstract: 'Atrium geometry shapes solar access, air movement, and energy use in large public buildings, but transferable multi-climate guidance has remained limited. This study combines a measurement-informed benchmark archetype with 39,202 EnergyPlus configurations per climate across five representative Chinese climates. A distribution-preserving meta-sample reduces simulation demand while retaining the library\'s energy distributions and sensitivity structure. Global analysis identifies atrium floor area, external atrium facade area, and east-facing openings as the dominant cross-climate geometric controls. Comparing theoretical and realistically attainable savings reveals that medium-sized, weakly fragmented atria with moderate external exposure offer the most robust energy performance, whereas very large or highly fragmented configurations can be theoretically efficient but operationally fragile.',
+            citation: 'Jin, Zhineng, Hongli Sun, Junkang Song, Wenke Zhong, Zishuang Xia, Hanjie Zheng, Changqi Wen, Bin Xu, and Borong Lin. "Climate-responsive atrium geometry in large public buildings: meta-sample modelling and robust energy-saving ranges across five climates." Energy & Buildings 369 (2026): 117980. https://doi.org/10.1016/j.enbuild.2026.117980.'
         },
         zh: {
             highlights: [
-                '建立面向中庭式公共建筑的多气候区参数化分析流程。',
-                '使用元样本建模连接设计参数与气候响应性能。',
-                '关注中庭几何、气候条件与能耗表现之间的相互作用。',
-                '为不同气候背景下的中庭形态优化提供早期设计证据。'
+                '在广州、成都、贵阳、天津和哈尔滨分别评估 39,202 组构型。',
+                '将基于实测信息的基准建筑原型校准至 CV(RMSE) 低于 5%。',
+                '在保留能耗分布和主要 Sobol 敏感性排序的同时，将仿真需求降低 75%。',
+                '识别中庭面积、外部中庭立面面积与东向开口构成跨气候稳健控制三要素。',
+                '提出 240-360 m² 中庭面积、1-3 个中庭和 500-1500 m² 外部中庭立面的稳健设计窗口。'
             ],
-            abstract: '该投稿论文利用元样本建模开展多气候区中庭设计分析，关注几何参数与气候条件如何共同影响建筑能耗和室内环境表现。',
-            citation: 'Jin, Z. 等. Towards Climate-Responsive Atrium Design: A Parametric Multi-Climate Analysis Using Meta-Sample Modeling. Under Review.'
+            abstract: '中庭几何会影响大型公共建筑的太阳得热、空气流动和能耗，但可跨气候迁移的量化指导长期不足。本研究把基于实测信息的基准建筑原型与五种代表性中国气候下每种 39,202 组 EnergyPlus 构型结合，并通过保留分布特征的元样本方法降低仿真需求，同时维持模型库的能耗分布与敏感性结构。全局分析识别出中庭面积、外部中庭立面面积和东向开口三个主要跨气候几何控制因素。理论节能与现实可达节能的联合比较表明，中等尺度、低碎片化且外部暴露适中的中庭具有最稳健的节能表现；极大或高度碎片化的形态虽可能取得理论高值，却更容易出现运行脆弱性。',
+            citation: 'Jin, Zhineng, Hongli Sun, Junkang Song, Wenke Zhong, Zishuang Xia, Hanjie Zheng, Changqi Wen, Bin Xu, and Borong Lin. "Climate-responsive atrium geometry in large public buildings: meta-sample modelling and robust energy-saving ranges across five climates." Energy & Buildings 369 (2026): 117980. https://doi.org/10.1016/j.enbuild.2026.117980.'
         }
     },
     {

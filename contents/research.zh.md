@@ -2,6 +2,32 @@
 
 <article class="research-story">
   <div class="story-copy">
+    <p class="story-meta">气候响应设计 · Energy &amp; Buildings · 2026</p>
+    <h2>跨越五种气候的稳健中庭几何设计</h2>
+    <p class="story-lead">基于实测信息构建的基准模型与每种气候 39,202 组中庭仿真揭示了从广州到哈尔滨均保持节能稳健性的设计范围；保留分布特征的元样本方法则让这一跨气候分析具备实际可行性。</p>
+    <ul class="evidence-list" aria-label="关键证据">
+      <li><strong>5</strong><span>种中国气候区对比</span></li>
+      <li><strong>75%</strong><span>仿真需求降幅</span></li>
+      <li><strong>240–360 m²</strong><span>稳健中庭面积</span></li>
+    </ul>
+    <details class="story-details">
+      <summary>了解更多 <span aria-hidden="true">↘</span></summary>
+      <div class="story-details__body">
+        <p><strong>方法。</strong>研究基于三个气候区的现场实测构建大型公共建筑原型，并在成都完成 CV(RMSE) 低于 5% 的校准；随后用 EnergyPlus 对同一套 39,202 组形态库在广州、成都、贵阳、天津和哈尔滨开展仿真，再进行保留分布特征的元样本抽样与 Sobol' 敏感性分析。</p>
+        <p><strong>发现。</strong>中庭面积、外部中庭立面面积与东向开口构成影响制冷及总能耗的跨气候稳健控制三要素。四分之一元样本在保留能耗分布和主要敏感性结构的同时，将仿真需求降低 75%。</p>
+        <p><strong>设计指导。</strong>最可靠的组合是 240–360 m² 中庭面积、1–3 个中庭以及 500–1500 m² 外部中庭立面。这些范围服务于早期类型层面的判断，实际项目仍需结合功能、围护结构、系统与当地气候重新校准。</p>
+        <p><a href="https://doi.org/10.1016/j.enbuild.2026.117980">阅读 <em>Energy &amp; Buildings</em> 论文</a></p>
+      </div>
+    </details>
+  </div>
+  <figure class="story-figure">
+    <img src="/static/assets/img/research/climate-responsive-atrium-five-climates.png" alt="连接大型公共建筑参数化中庭生成、39,202 组模型库以及广州、成都、贵阳、天津和哈尔滨五地仿真的研究流程" loading="lazy">
+    <figcaption>多气候基准模型库与分析流程。图 1，Jin 等，<em>Energy &amp; Buildings</em> 369（2026）。</figcaption>
+  </figure>
+</article>
+
+<article class="research-story">
+  <div class="story-copy">
     <p class="story-meta">运行智能 · Energy · 2026</p>
     <h2>从原始 BMS 数据到可执行建筑模型</h2>
     <p class="story-lead">AutoModelling 连接杂乱运行数据与可用于数字孪生的仿真模型，把语义点位映射、数据质控、稳态筛选、候选模型辨识、Modelica 代码生成和仿真验证整合为一条可复现流程。</p>

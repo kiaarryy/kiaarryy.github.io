@@ -2,6 +2,28 @@
 
 <article class="news-feature">
   <div class="feature-copy">
+    <p class="story-meta">2026 年 7 月 · Energy &amp; Buildings · 论文发表</p>
+    <h2>五种气候，共享一个稳健的中庭设计窗口</h2>
+    <p class="feature-lead">新发表的研究把覆盖五种气候、共 196,010 个案例的仿真分析转化为大型公共建筑中庭尺度、数量与外部暴露程度的可操作指导。</p>
+    <p class="feature-result">中庭面积 <strong>240–360 m²</strong> · 中庭数量 <strong>1–3</strong> · 外部中庭立面 <strong>500–1500 m²</strong>。</p>
+    <details class="story-details">
+      <summary>了解更多 <span aria-hidden="true">↘</span></summary>
+      <div class="story-details__body">
+        <p>基准模型库包含 39,202 组形态，并在广州、成都、贵阳、天津和哈尔滨采用一致流程完成评估。保留分布特征的元样本方法将仿真需求降低 75%，同时保持能耗分布与主要敏感性结构。</p>
+        <p>中庭面积、外部中庭立面面积与东向开口构成跨气候稳健控制三要素。因此，研究关注能够稳定实现节能的密集设计区间，而不是孤立的理论最优形态。</p>
+        <p>这些范围是服务于早期设计的类型层面指导，而非适用于所有项目的固定处方；围护结构、功能、系统和当地气象条件仍需针对具体项目校准。</p>
+        <p><a href="https://doi.org/10.1016/j.enbuild.2026.117980">论文 DOI</a></p>
+      </div>
+    </details>
+  </div>
+  <figure class="feature-figure">
+    <img src="/static/assets/img/research/climate-responsive-atrium-five-climates.png" alt="将参数化模型生成与中国五座城市仿真相连接的多气候中庭研究流程" loading="lazy">
+    <figcaption>Jin 等，<em>Energy &amp; Buildings</em> 369（2026），117980。</figcaption>
+  </figure>
+</article>
+
+<article class="news-feature">
+  <div class="feature-copy">
     <p class="story-meta">2026 年 6 月 · Energy · 论文发表</p>
     <h2>AutoModelling：从 BMS 数据到经验证的 Modelica 模型</h2>
     <p class="feature-lead">一套可复现流程把原始楼宇管理数据转化为可执行、可量化评估的冷水机组模型，并明确暴露点位缺失、稳态覆盖不足和模型不合规等问题。</p>
@@ -71,6 +93,7 @@
     <h2 id="timeline-title">近期其他动态</h2>
   </div>
   <ol>
+    <li><time datetime="2026-07">2026 年 7 月</time><div><strong>五气候中庭研究发表</strong><p>稳健中庭几何设计研究发表于 <em>Energy &amp; Buildings</em> 369（2026），117980。<a href="https://doi.org/10.1016/j.enbuild.2026.117980">阅读论文</a>。</p></div></li>
     <li><time datetime="2026-06">2026 年 6 月</time><div><strong>在 BAS 2026 作口头报告</strong><p>在香港汇报“Steady-State Detection for Chiller Modelling: A task-grounded benchmark using Modelica-based validation residuals”。</p></div></li>
     <li><time datetime="2025">2025</time><div><strong>开始在 HKUST 攻读博士学位</strong><p>进入香港科技大学土木及环境工程学系开展博士研究。</p></div></li>
     <li><time datetime="2024">2024</time><div><strong>研究生国家奖学金</strong><p>获得中国教育部研究生国家奖学金。</p></div></li>

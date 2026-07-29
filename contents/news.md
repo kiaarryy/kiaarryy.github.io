@@ -2,6 +2,28 @@
 
 <article class="news-feature">
   <div class="feature-copy">
+    <p class="story-meta">July 2026 · Energy &amp; Buildings · Publication</p>
+    <h2>Five climates, one robust atrium design window</h2>
+    <p class="feature-lead">The newly published study turns a 196,010-case cross-climate simulation campaign into practical guidance for sizing, grouping, and exposing atria in large public buildings.</p>
+    <p class="feature-result"><strong>240–360 m²</strong> atrium area · <strong>1–3</strong> atria · <strong>500–1500 m²</strong> external atrium facade.</p>
+    <details class="story-details">
+      <summary>Learn more <span aria-hidden="true">↘</span></summary>
+      <div class="story-details__body">
+        <p>The benchmark library contains 39,202 configurations evaluated consistently in Guangzhou, Chengdu, Guiyang, Tianjin, and Harbin. A distribution-preserving meta-sample cut simulation demand by 75% while retaining the energy distributions and dominant sensitivity structure.</p>
+        <p>Atrium floor area, external atrium facade area, and east-facing openings emerged as the climate-robust control triad. The study therefore emphasizes dense regions of reliable savings rather than isolated best-case geometries.</p>
+        <p>The ranges are typology-level guidance for early design, not universal project prescriptions; envelope, programme, systems, and local weather still require project-specific calibration.</p>
+        <p><a href="https://doi.org/10.1016/j.enbuild.2026.117980">Paper DOI</a></p>
+      </div>
+    </details>
+  </div>
+  <figure class="feature-figure">
+    <img src="/static/assets/img/research/climate-responsive-atrium-five-climates.png" alt="Multi-climate atrium research workflow connecting parametric model generation with simulations for five Chinese cities" loading="lazy">
+    <figcaption>Jin et al., <em>Energy &amp; Buildings</em> 369 (2026), 117980.</figcaption>
+  </figure>
+</article>
+
+<article class="news-feature">
+  <div class="feature-copy">
     <p class="story-meta">June 2026 · Energy · Publication</p>
     <h2>AutoModelling: BMS data becomes validated Modelica</h2>
     <p class="feature-lead">A reproducible pipeline now carries raw building-management data all the way to executable, quantitatively evaluated chiller models—without hiding missing points, weak steady-state coverage, or non-compliant outputs.</p>
@@ -71,6 +93,7 @@
     <h2 id="timeline-title">More recent activity</h2>
   </div>
   <ol>
+    <li><time datetime="2026-07">Jul 2026</time><div><strong>Five-climate atrium study published</strong><p>The robust geometry study appeared in <em>Energy &amp; Buildings</em> 369 (2026), 117980. <a href="https://doi.org/10.1016/j.enbuild.2026.117980">Read the paper</a>.</p></div></li>
     <li><time datetime="2026-06">Jun 2026</time><div><strong>Oral presentation at BAS 2026</strong><p>Presented “Steady-State Detection for Chiller Modelling: A task-grounded benchmark using Modelica-based validation residuals” in Hong Kong.</p></div></li>
     <li><time datetime="2025">2025</time><div><strong>Started PhD study at HKUST</strong><p>Joined the Department of Civil and Environmental Engineering at the Hong Kong University of Science and Technology.</p></div></li>
     <li><time datetime="2024">2024</time><div><strong>National Scholarship for Graduate Students</strong><p>Received the National Scholarship from the Ministry of Education, China.</p></div></li>

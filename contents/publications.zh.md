@@ -1,10 +1,8 @@
 #### 期刊论文
 
-##### 投稿中
-
-- <strong>Jin, Zhineng</strong>, Hongli Sun*, Junkang Song, Wenke Zhong, Zishuang Xia, Hanjie Zheng, Changqi Wen, Bin Xu and Borong Lin. "Towards Climate-Responsive Atrium Design: A Parametric Multi-Climate Analysis Using Meta-Sample Modeling." <strong>Under Review</strong>
-
 ##### 已发表
+
+- <strong>Jin, Zhineng</strong>, Hongli Sun*, Junkang Song, Wenke Zhong, Zishuang Xia, Hanjie Zheng, Changqi Wen, Bin Xu, and Borong Lin. "Climate-responsive atrium geometry in large public buildings: meta-sample modelling and robust energy-saving ranges across five climates." <strong>Energy & Buildings</strong> 369 (2026): 117980. [[论文]](https://doi.org/10.1016/j.enbuild.2026.117980)
 
 - <strong>Jin, Zhineng</strong> and Zhe Wang. "AutoModelling: From BMS Operational Data to Validated Modelica Models for Chillers." <strong>Energy</strong> (2026): 141700. [[Paper]](https://doi.org/10.1016/j.energy.2026.141700)
 
