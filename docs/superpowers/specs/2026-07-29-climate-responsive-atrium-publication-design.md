@@ -68,4 +68,3 @@ English and Chinese receive equivalent information, not literal word-for-word du
 - Serve the site locally and inspect Publications, Research, and News at desktop and mobile widths in English and Chinese.
 - Confirm the DOI link and image load successfully and check the browser console for errors.
 - Commit the implementation to `main` and push it to `origin/main`, allowing GitHub Pages to publish the update.
-

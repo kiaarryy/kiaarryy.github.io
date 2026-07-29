@@ -231,4 +231,3 @@ git push origin main
 ```
 
 Confirm `origin/main` contains the implementation commit. Poll the public Publications Markdown and the three public routes until the new DOI and July 2026 story are live.
-
