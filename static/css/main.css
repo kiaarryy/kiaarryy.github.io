@@ -406,7 +406,7 @@ a:hover {
 
 .profile-photo {
     width: 100%;
-    aspect-ratio: 4 / 5;
+    height: auto;
     display: block;
     object-fit: cover;
 }
